@@ -239,3 +239,4 @@ Route::post('markAttendence','AttendenceController@markattendence');
 // Route::get('/editTeacher/{id}','TeachersController@edit');
 // Route::post('updateTeacher','TeachersController@update');
 // Route::get('delTeacher/{id}', 'TeachersController@destroy');
+/*testing line*/
