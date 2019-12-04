@@ -110,6 +110,12 @@
                        <li>
                            <a href="{{ url('/examSchedule-list') }}">Exam Schedule</a>
                        </li>
+                       <li>
+                           <a href="{{ url('/grades-list') }}">Grade</a>
+                       </li>
+                       <li>
+                           <a href="{{ url('/results-list') }}">Result</a>
+                       </li>
                        
                     </ul>
                   </li>

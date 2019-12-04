@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Grade;
 
 class GradesController extends Controller
 {
@@ -13,7 +14,9 @@ class GradesController extends Controller
      */
     public function index()
     {
-        //
+        $grades = Grade::all();
+
+        return view('pages.grade.grades-list',compact('grades'));
     }
 
     /**
@@ -34,7 +37,20 @@ class GradesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $request->validate([
+      
+      'min_marks' => 'required',
+      'max_marks' => 'required',
+      'grade_name' => 'required',
+      
+    ]);
+
+
+        $values = array_except($request->all(),['_token']);
+
+        $grades = Grade::create($values);
+        // return back();
+       return redirect()->to('grades-list')->with(compact('grades'))->with('message', 'Grade added successfully');
     }
 
     /**
@@ -56,7 +72,8 @@ class GradesController extends Controller
      */
     public function edit($id)
     {
-        //
+          $grade = Grade::find($id);
+       return view('pages.grade.editGrades',compact('grade'));
     }
 
     /**
@@ -66,9 +83,22 @@ class GradesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Grade $grade)
     {
-        //
+          $request->validate([
+      
+      'min_marks' => 'required',
+      'max_marks' => 'required',
+      'grade_name' => 'required',
+      
+    ]);
+
+
+        $values = array_except($request->all(),['_token']);
+
+        $grades = Grade::where('id',$request->id)->update($values);
+        // return back();
+       return redirect()->to('grades-list')->with('message', 'Grade updated successfully');
     }
 
     /**
@@ -77,8 +107,11 @@ class GradesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
-        //
+         $grade = Grade::find($request->id);
+        if ($grade->delete()) {
+            return redirect()->to('grades-list')->with('message','Grade deleted successfully');
+        }
     }
 }

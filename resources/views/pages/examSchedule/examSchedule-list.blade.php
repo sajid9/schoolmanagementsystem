@@ -19,6 +19,7 @@
              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
+                    <th>Batch</th>
                     <th>Class</th>
   	                <th>Subject</th>
                     <th>Class Room</th>
@@ -32,7 +33,8 @@
                   <tbody>
 	                  @foreach($examSchedules as $examSchedule)
 						<tr>
-              <td>{{$examSchedule->classes->c_name}}</td>
+              <td>{{$examSchedule->batches->batchName}}</td>
+              <td>{{$examSchedule->batches->classes->c_name}}</td>
               <td>{{$examSchedule->subjects->sub_name}}</td>
               <td>{{$examSchedule->examSlots->classRooms->cRoom_name}}</td>
               <td>{{$examSchedule->examSlots->days->day_name}}</td>

@@ -36,7 +36,7 @@ Route::get('/admittedStd','AdmissionsController@index');
 Route::get('editAdmission/{id}','AdmissionsController@edit');
 Route::post('/updateAdmission','AdmissionsController@update');
 Route::get('/studentProfile/{id}','AdmissionsController@show')->name("student_profile");
-Route::get('admissionreport','AdmissionsController@admission_report');
+
 
 
 Route::post('/fetch','AdmissionsController@fetchfatername');
@@ -156,18 +156,24 @@ Route::get('delPeriods/{id}','PeriodsController@destroy');
 
 //TimeTable routes
 Route::get('/timeTables','TimeTablesController@create');
-Route::get('timeTable-list','TimeTablesController@index');
+Route::get('timeTable-list','TimeTablesController@index')->name('timeTable-list');
 Route::post('/addTimeTable','TimeTablesController@store');
 Route::get('editTimeTable/{id}','TimeTablesController@edit');
 Route::post('updateTimeTable','TimeTablesController@update');
 Route::get('delTimeTable/{id}','TimeTablesController@destroy');
-Route::get('attendence/{id}','TimeTablesController@attendence')->name('attendence');
-Route::get('timeTableReport','Reports\TimetableController@timetable_report');
-Route::post('timetablesearch','Reports\TimetableController@timetable_search');
-Route::get('attendanceReport','Reports\AttendanceController@attendance_report');
-Route::post('attendancesearch','Reports\AttendanceController@attendance_search');
+Route::get('attendence/{id}/{period_id}','TimeTablesController@attendence')->name('attendence');
 // Route::get('markattendence/{addmission_id}/{timeTable_id}','TimeTablesController@markattendence')->name('markattendence');
 // Route::post('markAttendence','TimeTablesController@markattendence');
+
+//Attendence routes
+Route::post('markAttendence','AttendenceController@markattendence');
+
+// Route::get('/attendence','AttendenceController@create');
+// Route::get('attendence-list','AttendenceController@index');
+// Route::post('/addAttendence','AttendenceController@store');
+// Route::get('editAttendence/{id}','AttendenceController@edit');
+// Route::post('updateAttendence','AttendenceController@update');
+// Route::get('delAttendence/{id}','AttendenceController@destroy');
 
 		// ExamTime routes
 
@@ -208,21 +214,22 @@ Route::get('delExamSchedule/{id}','ExamScheduleController@destroy');
 		// grades routes
 
 Route::get('/grades','GradesController@create');
-Route::post('/addGrades','GradesController@store');
+Route::post('/addGrade','GradesController@store');
 Route::get('grades-list','GradesController@index');
 Route::get('/editGrades/{id}','GradesController@edit');
 Route::post('updateGrades','GradesController@update');
 Route::get('delGrades/{id}','GradesController@destroy');
 
+		// results routes
 
-Route::post('markAttendence','AttendenceController@markattendence');
-//Attendence routes
-// Route::get('/attendence','AttendenceController@create');
-// Route::get('attendence-list','AttendenceController@index');
-// Route::post('/addAttendence','AttendenceController@store');
-// Route::get('editAttendence/{id}','AttendenceController@edit');
-// Route::post('updateAttendence','AttendenceController@update');
-// Route::get('delAttendence/{id}','AttendenceController@destroy');
+Route::get('/results','ResultsController@create');
+Route::post('/addResults','ResultsController@store');
+Route::get('results-list','ResultsController@index');
+Route::get('/editResults/{id}','ResultsController@edit');
+Route::post('updateResults','ResultsController@update');
+Route::get('delResults/{id}','ResultsController@destroy');
+
+
 	//charges routes
 // Route::get('/charges','HomeController@charges');
 // Route::get('/charges-list','HomeController@chargeList');
@@ -237,4 +244,3 @@ Route::post('markAttendence','AttendenceController@markattendence');
 // Route::get('/editTeacher/{id}','TeachersController@edit');
 // Route::post('updateTeacher','TeachersController@update');
 // Route::get('delTeacher/{id}', 'TeachersController@destroy');
-/*testing line*/

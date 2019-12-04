@@ -25,11 +25,11 @@
                     </select>
                     </div>
                     <div class="form-group">
-                    <label>Class<span style="color: red" class="required">*</span></label>
-                    <select custom class="form-control" name="class_id" required="required">
+                    <label>Batch<span style="color: red" class="required">*</span></label>
+                    <select custom class="form-control" name="batch_id" required="required">
                         <option value="">Select One</option>
-                        @foreach($classes as $class)
-                        <option {{ ($examSchedules->class_id == $class->id) ?'selected':'' }} value="{{$class->id}}">{{$class->c_name}}</option>
+                        @foreach($batches as $batch)
+                        <option {{ ($examSchedules->batch_id == $batch->id) ?'selected':'' }} value="{{$batch->id}}">{{$batch->batchName}} / {{$batch->classes->c_name}} / {{$batch->sections->sec_name}}</option>
                         @endforeach
                     </select>
                     </div>

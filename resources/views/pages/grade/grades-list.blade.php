@@ -32,7 +32,7 @@
               <td>{{$grade->max_marks}}</td>
               <td>{{$grade->grade_name}}</td>
 
-              <td><a href="{{ url('editDays/'.$day->id)}}"><i class="fa fa-edit"></i></a> <a href="{{ url('delDays/'.$day->id)}}"><i class="fa fa-trash"></i></a>
+              <td><a href="{{ url('editGrades/'.$grade->id)}}"><i class="fa fa-edit"></i></a> <a href="{{ url('delGrades/'.$grade->id)}}"><i class="fa fa-trash"></i></a>
               </td>
 						</tr>
 	                  @endforeach

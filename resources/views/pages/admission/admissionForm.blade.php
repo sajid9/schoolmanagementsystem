@@ -136,7 +136,7 @@
         var std= $(this).val();
         var token=$('input[name="_token"]').val();
         var request = $.ajax({
-          url: "http://localhost/integrate/public/fetch",
+          url: "http://localhost/schoolmanagementsystem/public/fetch",
           type: "POST",
            data:{stdid:std,_token:token},
           dataType: "json"

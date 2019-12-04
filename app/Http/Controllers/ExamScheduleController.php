@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ExamSlot;
-use App\MClass;
+use App\Batch;
 use App\Subject;
 use App\ExamTerm;
 use App\ExamSchedule;
@@ -18,7 +18,7 @@ class ExamScheduleController extends Controller
      */
     public function index()
     {
-          $examSchedules = ExamSchedule::with('examSlots.days','examSlots.examTimes','examSlots.classRooms','subjects','classes','examTerms')->get();
+          $examSchedules = ExamSchedule::with('examSlots.days','examSlots.examTimes','examSlots.classRooms','subjects','batches.classes','batches.sections','examTerms')->get();
           // dd($timeTables);
         return view('pages.examSchedule.examSchedule-list',compact('examSchedules'));
     }
@@ -31,10 +31,10 @@ class ExamScheduleController extends Controller
     public function create()
     {
          $examSlots = ExamSlot::all();
-        $classes = MClass::all();
+        $batches = Batch::all();
         $subjects = Subject::all();
         $examTerms = ExamTerm::all();
-         return view('pages.examSchedule.examSchedules',compact('examSlots','subjects','classes','examTerms'));
+         return view('pages.examSchedule.examSchedules',compact('examSlots','subjects','batches','examTerms'));
     }
 
     /**
@@ -48,7 +48,7 @@ class ExamScheduleController extends Controller
         $request->validate([
   
       'examSlot_id' => 'required',
-      'class_id' => 'required',
+      'batch_id' => 'required',
       'subject_id' => 'required',
       'examTerm_id' => 'required',
     ]);
@@ -81,11 +81,11 @@ class ExamScheduleController extends Controller
     public function edit($id)
     {
         $examSlots = ExamSlot::all();
-        $classes = MClass::all();
+        $batches = Batch::all();
         $subjects = Subject::all();
         $examTerms = ExamTerm::all();
         $examSchedules = ExamSchedule::find($id);
-        return view('pages.examSchedule.editExamSchedule ',compact('examSlots','subjects','examSchedules','classes','examTerms'));
+        return view('pages.examSchedule.editExamSchedule ',compact('examSlots','subjects','examSchedules','batches','examTerms'));
     }
 
     /**
@@ -100,7 +100,7 @@ class ExamScheduleController extends Controller
           $request->validate([
       
       'examSlot_id' => 'required',
-      'class_id' => 'required',
+      'batch_id' => 'required',
       'subject_id' => 'required',
       'examTerm_id' => 'required',
     ]);
