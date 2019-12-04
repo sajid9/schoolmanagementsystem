@@ -52,8 +52,7 @@
        </div>
             <!-- /.panel-heading -->
           
-        <?php echo e(dd($attendance)); ?>
-
+        
          <div class="panel-body">
             <div class="table-responsive">
               <table class="table">
@@ -70,7 +69,14 @@
                 <tbody>
                   <?php $__currentLoopData = $attendance; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $att): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <td></td>
+                    <td><?php echo e($att->admissions->registrations->firstName); ?></td>
+                    <td><?php echo e($att->timeTables->periods->periodName); ?></td>
+                    <td><?php echo e($att->timeTables->subjects->sub_name); ?></td>
+                    <td><?php echo e($att->timeTables->periods->times->time_name); ?></td>
+                    <td><?php echo e($att->timeTables->periods->days->day_name); ?></td>
+                    <td><?php echo e($att->timeTables->batches->classes->c_name); ?></td>
+                    <td><?php echo e($att->timeTables->batches->sections->sec_name); ?></td>
+                    <td><?php echo e($att->attendenceDate); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
@@ -80,7 +86,7 @@
                
             </div>
             <!-- /.panel-body -->
-        }
+        
         </div>
         <!-- /.panel -->
     </div>

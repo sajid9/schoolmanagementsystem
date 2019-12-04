@@ -44,7 +44,7 @@
               <td>{{$timeTable->batches->sections->sec_name}}</td>
 
               <td> {{--  <a href="{{ url('/timeTables')}}" type="button" class="btn btn-success btn-sm ">Mark</a> --}}
-                 <a href="{{ route("attendence",['id'=>$timeTable->id,'batch'=>$timeTable->batches->id]) }}" type="button" class="btn btn-success btn-sm">Mark </a>
+                <a href="{{ route("attendence",['id'=>$timeTable->id,'batch'=>$timeTable->batches->id]) }}" type="button" class="btn btn-success btn-sm">Mark </a>
                </td> 
 							
 							<td>

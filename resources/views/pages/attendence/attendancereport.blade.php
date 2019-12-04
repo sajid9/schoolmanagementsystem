@@ -56,7 +56,7 @@
        </div>
             <!-- /.panel-heading -->
           {{-- intialize empty array for days and time to remove repeatation and also check days --}}
-        {{dd($attendance)}}
+        
          <div class="panel-body">
             <div class="table-responsive">
               <table class="table">
@@ -73,7 +73,14 @@
                 <tbody>
                   @foreach($attendance as $att)
                   <tr>
-                    <td>$att->admissions->registrations->firstName</td>
+                    <td>{{$att->admissions->registrations->firstName}}</td>
+                    <td>{{$att->timeTables->periods->periodName}}</td>
+                    <td>{{$att->timeTables->subjects->sub_name}}</td>
+                    <td>{{$att->timeTables->periods->times->time_name}}</td>
+                    <td>{{$att->timeTables->periods->days->day_name}}</td>
+                    <td>{{$att->timeTables->batches->classes->c_name}}</td>
+                    <td>{{$att->timeTables->batches->sections->sec_name}}</td>
+                    <td>{{$att->attendenceDate}}</td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -83,7 +90,7 @@
                
             </div>
             <!-- /.panel-body -->
-        }
+        
         </div>
         <!-- /.panel -->
     </div>

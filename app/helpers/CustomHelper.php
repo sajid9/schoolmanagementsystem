@@ -3,6 +3,7 @@
 namespace App\helpers;
 use DB;
 use App\TimeTable;
+use App\examination_attendence;
 class CustomHelper{
 	public function getsubject($day,$time)
 	{
@@ -11,6 +12,10 @@ class CustomHelper{
 			})->whereHas('periods.times',function($q) use ($time){
 				$q->where('time_name',$time);
 			})->first();
+	}
+	public function MEA($scheduleId,$admissionId)
+	{
+		return examination_attendence::where('exam_schedule_id',$scheduleId)->where('admission_id',$admissionId)->first();
 	}
 }
 ?>

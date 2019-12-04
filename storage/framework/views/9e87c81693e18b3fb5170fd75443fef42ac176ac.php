@@ -22,20 +22,21 @@
                     <th>Exam Time</th>
                     <th>Date</th>
                     <th>Term</th>
+                    <th>Attendence</th>
                     <th>Action</th>
                   </tr>
                  </thead>
                   <tbody>
 	                  <?php $__currentLoopData = $examSchedules; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $examSchedule): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						<tr>
-              <td><?php echo e($examSchedule->classes->c_name); ?></td>
+              <td><?php echo e($examSchedule->batches->classes->c_name); ?></td>
               <td><?php echo e($examSchedule->subjects->sub_name); ?></td>
               <td><?php echo e($examSchedule->examSlots->classRooms->cRoom_name); ?></td>
               <td><?php echo e($examSchedule->examSlots->days->day_name); ?></td>
               <td><?php echo e($examSchedule->examSlots->examTimes->examTimeName); ?></td>
               <td><?php echo e($examSchedule->examSlots->slot_date); ?></td>
               <td><?php echo e($examSchedule->examTerms->examTermName); ?></td>
-
+              <td><a href="<?php echo e(url('examattendence/'.$examSchedule->id.'/'.$examSchedule->batch_id)); ?>" type="button" class="btn btn-success btn-sm">Mark </a></td>
               
 							
 							<td>

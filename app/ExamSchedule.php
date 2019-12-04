@@ -17,9 +17,9 @@ class ExamSchedule extends Model
     	return $this->hasOne('App\Subject','id','subject_id');
     }
 
-    public function classes()
+    public function batches()
     {
-    	return $this->hasOne('App\MClass','id','class_id');
+    	return $this->hasOne('App\Batch','id','batch_id');
     }
 
     public function examTerms()

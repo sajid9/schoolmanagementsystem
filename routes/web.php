@@ -204,6 +204,8 @@ Route::get('examSchedule-list','ExamScheduleController@index');
 Route::get('/editExamSchedule/{id}','ExamScheduleController@edit');
 Route::post('updateExamSchedule','ExamScheduleController@update');
 Route::get('delExamSchedule/{id}','ExamScheduleController@destroy');
+Route::get('examattendence/{scheduleId}/{batchId}','ExamScheduleController@axam_attendence_list');
+Route::post('markexamAttendence','ExamScheduleController@mark_exam_attendence');
 		
 		// grades routes
 

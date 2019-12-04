@@ -40,7 +40,7 @@
               <td><?php echo e($timeTable->batches->sections->sec_name); ?></td>
 
               <td> 
-                 <a href="<?php echo e(route("attendence",['id'=>$timeTable->id,'batch'=>$timeTable->batches->id])); ?>" type="button" class="btn btn-success btn-sm">Mark </a>
+                <a href="<?php echo e(route("attendence",['id'=>$timeTable->id,'batch'=>$timeTable->batches->id])); ?>" type="button" class="btn btn-success btn-sm">Mark </a>
                </td> 
 							
 							<td>
