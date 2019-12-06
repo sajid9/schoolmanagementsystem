@@ -20,7 +20,7 @@
                     <th>Father/Guardian</th>
                     <th>Roll Number</th>
                     <th>Today Date</th>
-                    <th>Action</th>
+                    <th><input type="checkbox" name="all" id="markall"> Mark All</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -31,10 +31,10 @@
                    <td><?php echo e($student->admissions->registrations->gfirstName); ?></td>
                    <td><?php echo e($student->admissions->rollnumber); ?></td>
                   
-                   <td>
+                  <td>
                    <?php echo date("Y/m/d");?>
-                   </td>
-                   <td>
+                  </td>
+                  <td>
                     <input type="hidden" name="addmission_id" class="addmission_id" value="<?php echo e($student->admissions->id); ?>">
                     <input type="hidden" name="timeTable_id" class="schedule_id" value="<?php echo e($scheduleId); ?>">
                     <div class="checkbox">
@@ -42,17 +42,15 @@
                     <input type="checkbox" class="checkboxval" id="checkbox" data-toggle="toggle" data-on="Mark" data-off="Unmarked" name="is_active" <?php echo e(@(CH::MEA($scheduleId,$student->admissions->id)->is_active == 'yes') ? 'checked': ''); ?>>
                     </label>
                     </div>
-                   </td>
+                  </td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </tbody>
                 </table>
                 <div class="form-group col-md-4">
-                    <label>Attendence Date<span style="color: red" class="required">*</span></label>
-                    <input type="Date" name="attendenceDate"  class="attendenceDate" required="required" id="attendenceDate">
+                  <label>Attendence Date<span style="color: red" class="required">*</span></label>
+                  <input type="Date" name="attendenceDate"  class="attendenceDate" required="required" id="attendenceDate">
                 </div>
-                 
-
               </div>
               <!-- /.table-responsive -->
                       
@@ -74,14 +72,24 @@
 ##parent-placeholder-d7eb6b340a11a367a1bec55e4a421d949214759f##
 <script>
   $(document).ready(function(){
+    $('#markall').on('click',function(){
+          
+          $('.checkboxval').each(function(e,val){
+           
+            if($('#markall').prop("checked") == true)
+            {
+              $(this).bootstrapToggle('on');
+            }else{
+              $(this).bootstrapToggle('off');
+            }
+          });
+        })
     $('#submitAttendence').click(function(){
       
       var attendenceDate=$('#attendenceDate').val();
       if(attendenceDate=='' ){
         alert("please fill the required filed");
       }else{
-
-
         var mydata=[];
         $('.checkboxval').each(function(e){
 
