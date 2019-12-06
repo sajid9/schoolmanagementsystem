@@ -24,6 +24,8 @@ class AttendanceController extends Controller
     	$student = $request->student;
     	$class   = $request->class;
     	$section = $request->section;
+        $from    = $request->from;
+        $to      = $request->to;
     	$search  = Attendence::with('admissions.registrations','timeTables.periods.times','timeTables.periods.days','timeTables.periods.classRooms','timeTables.subjects','timeTables.batches.classes','timeTables.batches.sections','timeTables.batches.years');
     	if($student != null){
     		$search->whereHas('admissions',function($q) use($student){
@@ -40,6 +42,9 @@ class AttendanceController extends Controller
     			$q->where('section_id',$section);
     		});
     	}
+        if($from != null && $to != null){
+            $search->whereBetween('attendenceDate',[$from,$to]);
+        }
     	$attendance = $search->get();
     	$students = Admission::with('registrations')->get();
     	$classes = MClass::all();

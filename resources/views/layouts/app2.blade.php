@@ -41,7 +41,9 @@
                       </a>
                     </li>
                     <li><a href="{{ url('user/changepassword') }}">Reset Password</a></li>
-                    <li><a href="{{ url('logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li>
+                      <a id="logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    </li>
                   </ul>
                 </li>
 
@@ -113,6 +115,10 @@
             </nav>
           </div>
         </div>
+        <form id="logoutform" method="POST" action="{{url('/logout')}}">
+          <input type="hidden" name="_token" value="{{csrf_token()}}">
+        </form>
+
         <!-- /top navigation -->
          <!-- page content -->
         <div class="right_col" role="main">
@@ -126,5 +132,10 @@
 		    </div>
 		{{-- include all js files --}}
 		@yield('footer')
+    <script>
+      $('#logout').on('click',function(){
+        $('#logoutform').submit();
+      })
+    </script>
 	</body>
 </html>

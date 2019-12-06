@@ -21,6 +21,10 @@ class ExamSchedule extends Model
     {
     	return $this->hasOne('App\Batch','id','batch_id');
     }
+    public function terms()
+    {
+        return $this->hasOne('App\ExamTerm','id','examTerm_id');
+    }
 
     public function examTerms()
     {

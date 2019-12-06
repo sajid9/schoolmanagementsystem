@@ -13,6 +13,7 @@ class HomeController extends Controller
     */
    public function __construct()
    {
+    $this->middleware('auth');
    }
    /**
     * Show the application dashboard.
@@ -27,9 +28,9 @@ class HomeController extends Controller
    
    public function myProfile($id)
    {
-   	$classes = MClass::all();
-   	$reg = Registration::find($id);
-   	 return view('pages.viewProfile',compact('reg','classes'));
+    $classes = MClass::all();
+    $reg = Registration::find($id);
+     return view('pages.viewProfile',compact('reg','classes'));
    }
 
    public function regform(){
