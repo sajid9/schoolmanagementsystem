@@ -272,6 +272,13 @@ Route::get('/editEmployeeGrade/{id}','EmployeeGradeController@edit');
 Route::post('updateEmployeeGrade','EmployeeGradeController@update');
 Route::get('delEmployeeGrade/{id}','EmployeeGradeController@destroy');
 
+Route::get('admissionreport','AdmissionsController@admission_report');	
+Route::get('attendence/{id}','TimeTablesController@attendence')->name('attendence');	
+Route::get('timeTableReport','Reports\TimetableController@timetable_report');	
+Route::post('timetablesearch','Reports\TimetableController@timetable_search');	
+Route::get('attendanceReport','Reports\AttendanceController@attendance_report');	
+Route::post('attendancesearch','Reports\AttendanceController@attendance_search');
+Route::post('markAttendence','AttendenceController@markattendence');	
 
 	//charges routes
 // Route::get('/charges','HomeController@charges');
