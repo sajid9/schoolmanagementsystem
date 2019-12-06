@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Employe;
-use App\EmployeeGrade;
+use App\SalaryChargType;
 
-class EmployeesController extends Controller
+class SalaryChargTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-  public function index()
+   public function index()
     {
-        $employees = Employe::with('employeeGrades')->get();
-        return view('pages.employee.employees-list',compact('employees'));
+        $chargTypes = SalaryChargType::all();
+
+        return view('pages.salaryChargType.salaryChargTypes-list',compact('chargTypes'));
     }
 
     /**
@@ -26,8 +26,8 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        $employeeGrades = EmployeeGrade::all();
-         return view('pages.employee.employees',compact('employeeGrades'));
+      return view('pages.salaryChargType.salaryChargTypes');
+
     }
 
     /**
@@ -38,18 +38,18 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+         $request->validate([
       
-      'emp_name' => 'required',
-      'employeeGrade_id' => 'required',
+      'salaryChargType' => 'required',
+      
     ]);
 
 
         $values = array_except($request->all(),['_token']);
 
-        $employees = Employe::create($values);
+        $chargTypes = SalaryChargType::create($values);
         // return back();
-       return redirect()->to('employees-list')->with(compact('employees'))->with('message', 'Employee added successfully');
+       return redirect()->to('salaryChargTypes-list')->with(compact('chargTypes'))->with('message', 'SalaryChargType added successfully');
     }
 
     /**
@@ -71,9 +71,8 @@ class EmployeesController extends Controller
      */
     public function edit($id)
     {
-        $employeeGrades = EmployeeGrade::all();
-        $employees = Employe::find($id);
-        return view('pages.employee.editEmployees ',compact('employeeGrades','employees'));
+         $chargTypes = SalaryChargType::find($id);
+       return view('pages.salaryChargType.editSalaryChargTypes',compact('chargTypes'));
     }
 
     /**
@@ -85,18 +84,18 @@ class EmployeesController extends Controller
      */
     public function update(Request $request)
     {
-        $request->validate([
+         $request->validate([
       
-      'emp_name' => 'required',
-      'employeeGrade_id' => 'required',
+      'salaryChargType' => 'required',
+      
     ]);
 
 
         $values = array_except($request->all(),['_token']);
 
-        $employees = Employe::where('id',$request->id)->update($values);
+        $chargTypes = SalaryChargType::where('id',$request->id)->update($values);
         // return back();
-       return redirect()->to('employees-list')->with('message', 'Employee updated successfully');
+       return redirect()->to('salaryChargTypes-list')->with('message', 'SalaryChargType updated successfully');
     }
 
     /**
@@ -105,11 +104,11 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy($id,Request $request)
     {
-        $employees = Employe::find($request->id);
-        if($employees->delete()) {
-            return redirect()->to('employees-list')->with('message','Employee deleted successfully');
+       $chargTypes = SalaryChargType::find($request->id);
+        if ($chargTypes->delete()) {
+            return redirect()->to('salaryChargTypes-list')->with('message','SalaryChargType deleted successfully');
         }
     }
 }

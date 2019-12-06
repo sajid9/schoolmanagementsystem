@@ -2,16 +2,16 @@
 @extends('includes.header2')
 @extends('includes.sidebar2')
 @extends('includes.footer2')
-@section('title','Employees List')
+@section('title','Employee Grades List')
 @section('content')
 
  <div class="row">
   @include('includes.alerts')
-   <div class="col-lg-12">
+   <div class="col-lg-8">
      <div class="panel panel-default">
        <div class="panel-heading">
-                Employees
-         <a href="{{ url('/employees')}}" type="button" class="btn btn-primary btn-sm pull-right">Add Employ</a>      
+                Employee Grades
+         <a href="{{ url('/employeeGrade')}}" type="button" class="btn btn-primary btn-sm pull-right">Add EmployeeGrade</a>      
        </div>
             <!-- /.panel-heading -->
          <div class="panel-body">
@@ -19,16 +19,16 @@
              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Name</th>
-	                <th>Action</th>
-                   </tr>
+                    <th>Employee Grade</th>
+  	                <th>Action</th>
+                  </tr>
                  </thead>
                   <tbody>
-	                  @foreach($employees as $employe)
+	                  @foreach($employeeGrades as $employeeGrade)
 						<tr>
-							<td>{{$employe->emp_name}}</td>
-							
-							<td><a href="#"><i class="fa fa-edit"></i></a> <a href="#"><i class="fa fa-trash"></i></a>
+							<td>{{$employeeGrade->employeeGrade}}</td>
+
+              <td><a href="{{ url('editEmployeeGrade/'.$employeeGrade->id)}}"><i class="fa fa-edit"></i></a> <a href="{{ url('delEmployeeGrade/'.$employeeGrade->id)}}"><i class="fa fa-trash"></i></a>
               </td>
 						</tr>
 	                  @endforeach

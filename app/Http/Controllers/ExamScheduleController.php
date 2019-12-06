@@ -8,6 +8,8 @@ use App\Batch;
 use App\Subject;
 use App\ExamTerm;
 use App\ExamSchedule;
+use App\CEnrollment;
+use App\examination_attendence;
 
 class ExamScheduleController extends Controller
 {
@@ -18,7 +20,9 @@ class ExamScheduleController extends Controller
      */
     public function index()
     {
+
           $examSchedules = ExamSchedule::with('examSlots.days','examSlots.examTimes','examSlots.classRooms','subjects','batches.classes','batches.sections','examTerms')->get();
+
           // dd($timeTables);
         return view('pages.examSchedule.examSchedule-list',compact('examSchedules'));
     }
@@ -125,5 +129,33 @@ class ExamScheduleController extends Controller
         if($examSchedules->delete()) {
             return redirect()->to('examSchedule-list')->with('message','ExamSchedule deleted successfully');
         }
+    }
+    public function axam_attendence_list($scheduleId,$batchId)
+    {
+       $students = CEnrollment::with('admissions.registrations','batches.classes','batches.sections','batches.years')->where('batch_id',$batchId)->get();
+       return view('pages.examSchedule.examAttendence',compact('students','scheduleId'));
+    }
+    function mark_exam_attendence(Request $request){
+
+        foreach ($request->mydata as  $key => $value) {
+            $check = examination_attendence::where('exam_schedule_id',$value['schedule_id'])->where('admission_id',$value['addmission_id'])->get();
+            if(sizeof($check) > 0){
+                $attendence =  examination_attendence::find($check[0]->id);
+                $attendence->admission_id     = $value['addmission_id'];
+                $attendence->exam_schedule_id = $value['schedule_id'];
+                $attendence->is_active        = $value['attendence'];
+                $attendence->attendenceDate   = $value['attendenceDate'];
+                $attendence->save();
+            }else{
+                examination_attendence::create([
+                    'admission_id'     => $value['addmission_id'],
+                    'exam_schedule_id' => $value['schedule_id'],
+                    'is_active'        => $value['attendence'],
+                    'attendenceDate'   => $value['attendenceDate'],
+                ]);
+            }
+            
+        }
+        return json_encode(['message'=>'success']);
     }
 }

@@ -21,7 +21,7 @@ class TimeTablesController extends Controller
      */
     public function index()
     {
-          $timeTables = TimeTable::with('periods.times','periods.days','periods.classRooms','subjects','batches.classes','batches.sections','batches.years')->get();
+        $timeTables = TimeTable::with('periods.times','periods.days','periods.classRooms','subjects','batches.classes','batches.sections','batches.years')->get();
           // dd($timeTables);
         return view('pages.timeTable.timeTable-list',compact('timeTables'));
     }

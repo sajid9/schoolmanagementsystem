@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Employe;
-use App\EmployeeGrade;
+use App\SalaryChargHead;
 
-class EmployeesController extends Controller
+class SalaryChargHeadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,9 @@ class EmployeesController extends Controller
      */
   public function index()
     {
-        $employees = Employe::with('employeeGrades')->get();
-        return view('pages.employee.employees-list',compact('employees'));
+        $chargHeads = SalaryChargHead::all();
+
+        return view('pages.salaryChargHead.salaryChargHead-list',compact('chargHeads'));
     }
 
     /**
@@ -26,8 +26,8 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        $employeeGrades = EmployeeGrade::all();
-         return view('pages.employee.employees',compact('employeeGrades'));
+      return view('pages.salaryChargHead.salaryChargHead');
+
     }
 
     /**
@@ -38,18 +38,18 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+         $request->validate([
       
-      'emp_name' => 'required',
-      'employeeGrade_id' => 'required',
+      'salaryChargHead' => 'required',
+      
     ]);
 
 
         $values = array_except($request->all(),['_token']);
 
-        $employees = Employe::create($values);
+        $chargHeads = SalaryChargHead::create($values);
         // return back();
-       return redirect()->to('employees-list')->with(compact('employees'))->with('message', 'Employee added successfully');
+       return redirect()->to('salaryChargHead-list')->with(compact('chargHeads'))->with('message', 'SalaryChargHead added successfully');
     }
 
     /**
@@ -71,9 +71,8 @@ class EmployeesController extends Controller
      */
     public function edit($id)
     {
-        $employeeGrades = EmployeeGrade::all();
-        $employees = Employe::find($id);
-        return view('pages.employee.editEmployees ',compact('employeeGrades','employees'));
+         $chargHeads = SalaryChargHead::find($id);
+       return view('pages.salaryChargHead.editSalaryChargHead',compact('chargHeads'));
     }
 
     /**
@@ -85,18 +84,18 @@ class EmployeesController extends Controller
      */
     public function update(Request $request)
     {
-        $request->validate([
+         $request->validate([
       
-      'emp_name' => 'required',
-      'employeeGrade_id' => 'required',
+      'salaryChargHead' => 'required',
+      
     ]);
 
 
         $values = array_except($request->all(),['_token']);
 
-        $employees = Employe::where('id',$request->id)->update($values);
+        $chargHeads = SalaryChargHead::where('id',$request->id)->update($values);
         // return back();
-       return redirect()->to('employees-list')->with('message', 'Employee updated successfully');
+       return redirect()->to('salaryChargHead-list')->with('message', 'SalaryChargHead updated successfully');
     }
 
     /**
@@ -105,11 +104,11 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy($id,Request $request)
     {
-        $employees = Employe::find($request->id);
-        if($employees->delete()) {
-            return redirect()->to('employees-list')->with('message','Employee deleted successfully');
+       $chargHeads = SalaryChargHead::find($request->id);
+        if ($chargHeads->delete()) {
+            return redirect()->to('salaryChargHead-list')->with('message','SalaryChargHead deleted successfully');
         }
     }
 }

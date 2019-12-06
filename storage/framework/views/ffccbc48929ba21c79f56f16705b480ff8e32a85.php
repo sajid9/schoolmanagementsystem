@@ -23,6 +23,7 @@
                     <th>Exam Time</th>
                     <th>Date</th>
                     <th>Term</th>
+                    <th>Attendence</th>
                     <th>Action</th>
                   </tr>
                  </thead>
@@ -37,8 +38,8 @@
               <td><?php echo e($examSchedule->examSlots->examTimes->examTimeName); ?></td>
               <td><?php echo e($examSchedule->examSlots->slot_date); ?></td>
               <td><?php echo e($examSchedule->examTerms->examTermName); ?></td>
-
-              
+              <td><a href="<?php echo e(url('examattendence/'.$examSchedule->id.'/'.$examSchedule->batch_id)); ?>" type="button" class="btn btn-success btn-sm">Mark </a></td>
+           
 							
 							<td>
                 <a href="<?php echo e(url('editExamSchedule/'.$examSchedule->id)); ?>">

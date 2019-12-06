@@ -88,10 +88,13 @@ Route::get('/editYears/{id}','YearsController@edit');
 Route::post('updateYears','YearsController@update');
 Route::get('delYears/{id}','YearsController@destroy');
 
-//employes
+//employes routes
 Route::get('/employees','EmployeesController@create');
 Route::get('employees-list','EmployeesController@index');
 Route::post('/addEmployees','EmployeesController@store');
+Route::get('/editEmployees/{id}','EmployeesController@edit');
+Route::post('updateEmployees','EmployeesController@update');
+Route::get('delEmployees/{id}','EmployeesController@destroy');
 
 //batches
 Route::get('/batches','BatchesController@create');
@@ -210,6 +213,8 @@ Route::get('examSchedule-list','ExamScheduleController@index');
 Route::get('/editExamSchedule/{id}','ExamScheduleController@edit');
 Route::post('updateExamSchedule','ExamScheduleController@update');
 Route::get('delExamSchedule/{id}','ExamScheduleController@destroy');
+Route::get('examattendence/{scheduleId}/{batchId}','ExamScheduleController@axam_attendence_list');
+Route::post('markexamAttendence','ExamScheduleController@mark_exam_attendence');
 		
 		// grades routes
 
@@ -228,6 +233,44 @@ Route::get('results-list','ResultsController@index');
 Route::get('/editResults/{id}','ResultsController@edit');
 Route::post('updateResults','ResultsController@update');
 Route::get('delResults/{id}','ResultsController@destroy');
+		
+		// salaryChargTypes routes
+
+Route::get('/salaryChargTypes','SalaryChargTypeController@create');
+Route::post('/addSalaryChargType','SalaryChargTypeController@store');
+Route::get('salaryChargTypes-list','SalaryChargTypeController@index');
+Route::get('/editSalaryChargType/{id}','SalaryChargTypeController@edit');
+Route::post('updateSalaryChargType','SalaryChargTypeController@update');
+Route::get('delSalaryChargType/{id}','SalaryChargTypeController@destroy');
+
+		
+		// salaryChargCategory routes
+
+Route::get('/salaryChargCategory','SalaryChargCategoryController@create');
+Route::post('/addSalaryChargCategory','SalaryChargCategoryController@store');
+Route::get('salaryChargCategory-list','SalaryChargCategoryController@index');
+Route::get('/editSalaryChargCategory/{id}','SalaryChargCategoryController@edit');
+Route::post('updateSalaryChargCategory','SalaryChargCategoryController@update');
+Route::get('delSalaryChargCategory/{id}','SalaryChargCategoryController@destroy');
+
+		
+		// salaryChargHead routes
+
+Route::get('/salaryChargHead','SalaryChargHeadController@create');
+Route::post('/addSalaryChargHead','SalaryChargHeadController@store');
+Route::get('salaryChargHead-list','SalaryChargHeadController@index');
+Route::get('/editSalaryChargHead/{id}','SalaryChargHeadController@edit');
+Route::post('updateSalaryChargHead','SalaryChargHeadController@update');
+Route::get('delSalaryChargHead/{id}','SalaryChargHeadController@destroy');
+		
+		// employeeGrade routes
+
+Route::get('/employeeGrade','EmployeeGradeController@create');
+Route::post('/addEmployeeGrade','EmployeeGradeController@store');
+Route::get('employeeGrade-list','EmployeeGradeController@index');
+Route::get('/editEmployeeGrade/{id}','EmployeeGradeController@edit');
+Route::post('updateEmployeeGrade','EmployeeGradeController@update');
+Route::get('delEmployeeGrade/{id}','EmployeeGradeController@destroy');
 
 
 	//charges routes

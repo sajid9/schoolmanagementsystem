@@ -1,4 +1,4 @@
-<?php $__env->startSection('title','Time Table List'); ?>
+<?php $__env->startSection('title','Employees List'); ?>
 <?php $__env->startSection('content'); ?>
 
  <div class="row">
@@ -6,8 +6,8 @@
    <div class="col-lg-12">
      <div class="panel panel-default">
        <div class="panel-heading">
-                Time Table
-         <a href="<?php echo e(url('/timeTables')); ?>" type="button" class="btn btn-primary btn-sm pull-right">Add TimeTable</a>      
+                Employees
+         <a href="<?php echo e(url('/employees')); ?>" type="button" class="btn btn-primary btn-sm pull-right">Add Employ</a>      
        </div>
             <!-- /.panel-heading -->
          <div class="panel-body">
@@ -15,39 +15,22 @@
              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Period</th>
-                    <th>Time</th>
-                    <th>Day</th>
-                    <th>Class Room</th>
-  	                <th>Subject</th>
-                    <th>Batch</th>
-                    <th>Class</th>
-                    <th>Section</th>
-                    <th>Attendence</th>
-                    <th>Action</th>
-                  </tr>
+                  <th>Name</th>
+                  <th>Employee Grade</th>
+	                <th>Action</th>
+                   </tr>
                  </thead>
                   <tbody>
-	                  <?php $__currentLoopData = $timeTables; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $timeTable): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+	                  <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $employee): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						<tr>
-              <td><?php echo e($timeTable->periods->periodName); ?></td>
-              <td><?php echo e($timeTable->periods->times->time_name); ?></td>
-              <td><?php echo e($timeTable->periods->days->day_name); ?></td>
-              <td><?php echo e($timeTable->periods->classRooms->cRoom_name); ?></td>
-              <td><?php echo e($timeTable->subjects->sub_name); ?></td>
-              <td><?php echo e($timeTable->batches->batchName); ?></td>
-              <td><?php echo e($timeTable->batches->classes->c_name); ?></td>
-              <td><?php echo e($timeTable->batches->sections->sec_name); ?></td>
-
-              <td> 
-                <a href="<?php echo e(route("attendence",['id'=>$timeTable->id,'batch'=>$timeTable->batches->id])); ?>" type="button" class="btn btn-success btn-sm">Mark </a>
-               </td> 
+							<td><?php echo e($employee->emp_name); ?></td>
+              <td><?php echo e($employee->employeeGrades->employeeGrade); ?></td>
 							
 							<td>
-                <a href="<?php echo e(url('editTimeTable/'.$timeTable->id)); ?>">
+                <a href="<?php echo e(url('editEmployees/'.$employee->id)); ?>">
                   <i class="fa fa-edit"></i>
                 </a>
-                <a href="<?php echo e(url('delTimeTable/'.$timeTable->id)); ?>">
+                <a href="<?php echo e(url('delEmployees/'.$employee->id)); ?>">
                   <i class="fa fa-trash"></i>
                 </a>
               </td>

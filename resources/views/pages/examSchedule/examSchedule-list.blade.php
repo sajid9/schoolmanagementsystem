@@ -27,6 +27,7 @@
                     <th>Exam Time</th>
                     <th>Date</th>
                     <th>Term</th>
+                    <th>Attendence</th>
                     <th>Action</th>
                   </tr>
                  </thead>
@@ -41,10 +42,8 @@
               <td>{{$examSchedule->examSlots->examTimes->examTimeName}}</td>
               <td>{{$examSchedule->examSlots->slot_date}}</td>
               <td>{{$examSchedule->examTerms->examTermName}}</td>
-
-              {{-- <td> 
-                 <a href="{{ route("attendence",['id'=>$timeTable->id,'batch'=>$timeTable->batches->id]) }}" type="button" class="btn btn-success btn-sm">Mark </a>
-               </td>  --}}
+              <td><a href="{{url('examattendence/'.$examSchedule->id.'/'.$examSchedule->batch_id)}}" type="button" class="btn btn-success btn-sm">Mark </a></td>
+           
 							
 							<td>
                 <a href="{{ url('editExamSchedule/'.$examSchedule->id)}}">

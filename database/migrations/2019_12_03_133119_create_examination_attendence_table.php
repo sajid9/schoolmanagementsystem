@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmployesTable extends Migration
+class CreateExaminationAttendenceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateEmployesTable extends Migration
      */
     public function up()
     {
-        Schema::create('employes', function (Blueprint $table) {
+        Schema::create('examination_attendence', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('emp_name');
-            $table->string('employeeGrade_id');
-
+            $table->string('admission_id');
+            $table->string('exam_schedule_id');
+            $table->enum('is_active', ['yes', 'no'])->default('no');
+            $table->string('attendenceDate');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateEmployesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employes');
+        Schema::dropIfExists('examination_attendence');
     }
 }
