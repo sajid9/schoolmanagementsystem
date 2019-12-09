@@ -116,6 +116,9 @@
                        <li>
                            <a href="<?php echo e(url('/results-list')); ?>">Result</a>
                        </li>
+                       <li>
+                           <a href="<?php echo e(url('/student-result')); ?>">Students Result</a>
+                       </li>
                        
                     </ul>
                   </li>

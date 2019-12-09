@@ -119,6 +119,9 @@
                        <li>
                            <a href="{{ url('/results-list') }}">Result</a>
                        </li>
+                       <li>
+                           <a href="{{ url('/student-result') }}">Students Result</a>
+                       </li>
                        
                     </ul>
                   </li>

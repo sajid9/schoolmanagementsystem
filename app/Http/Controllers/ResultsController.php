@@ -7,6 +7,9 @@ use App\Admission;
 use App\ExamSchedule;
 use App\Grade;
 use App\Result;
+use App\MClass;
+use App\Section;
+use App\ExamTerm;
 
 class ResultsController extends Controller
 {
@@ -126,5 +129,48 @@ class ResultsController extends Controller
         if($results->delete()) {
             return redirect()->to('results-list')->with('message','Result deleted successfully');
         }
+    }
+    public function student_result()
+    {
+        $students = Admission::with('registrations')->get();
+        $classes = MClass::all();
+        $sections = Section::all();
+        $terms = ExamTerm::all();
+        $results = array();
+        return view('pages.result.student-result',compact('students','classes','sections','results','terms'));
+    }
+    public function result_search(Request $request)
+    {
+        $student = $request->student;
+        $class   = $request->class;
+        $section = $request->section;
+        $term    = $request->term;
+        $search = Result::with('admissions.registrations','examSchedules.batches','grades');
+        if($student != null){
+            $search->whereHas('admissions',function($q) use($student){
+                $q->where('id',$student);
+            });
+        }
+        if($class != null){
+            $search->whereHas('examSchedules.batches',function($q) use($class){
+                $q->where('class_id',$class);
+            });
+        }
+        if($section != null){
+            $search->whereHas('examSchedules.batches',function($q) use($section){
+                $q->where('section_id',$section);
+            });
+        }
+        if($term != null){
+            $search->whereHas('examSchedules',function($q) use($term){
+                $q->where('examTerm_id',$term);
+            });
+        }
+        $results = $search->get();
+        $students = Admission::with('registrations')->get();
+        $classes = MClass::all();
+        $sections = Section::all();
+        $terms = ExamTerm::all();
+        return view('pages.result.student-result',compact('students','classes','sections','results','terms'));
     }
 }
