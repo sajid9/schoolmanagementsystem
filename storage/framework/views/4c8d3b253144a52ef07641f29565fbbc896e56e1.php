@@ -1,4 +1,4 @@
-@section('sidebar')
+<?php $__env->startSection('sidebar'); ?>
    <br />
 
             <!-- sidebar menu -->
@@ -6,7 +6,7 @@
    <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="{{url('/')}}" class="site_title"><i class="fa fa-paw"></i> <span>SB Software</span></a>
+              <a href="<?php echo e(url('/')); ?>" class="site_title"><i class="fa fa-paw"></i> <span>SB Software</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -14,7 +14,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{ asset('assets/images/user.png') }}" alt="..." class="img-circle profile_img">
+                <img src="<?php echo e(asset('assets/images/user.png')); ?>" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -34,93 +34,90 @@
                   <li><a><i class="fa fa-graduation-cap"></i>Academics<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                        <li>
-                           <a href="{{ url('/registeredStd')}}">Registration</a>
+                           <a href="<?php echo e(url('/registeredStd')); ?>">Registration</a>
                        </li>
                        <li>
-                           <a href="{{ url('/admittedStd')}}">Admission</a>
+                           <a href="<?php echo e(url('/admittedStd')); ?>">Admission</a>
                        </li>
                        <li>
-                           <a href="{{ url('/admissionreport')}}">Admission Report</a>
+                           <a href="<?php echo e(url('/admissionreport')); ?>">Admission Report</a>
                        </li>
                        <li>
-                           <a href="{{ url('/batches-list') }}">Batch</a>
+                           <a href="<?php echo e(url('/batches-list')); ?>">Batch</a>
                        </li>
                        <li>
-                           <a href="{{ url('/cEnrollments-list') }}">Class Enrollment</a>
+                           <a href="<?php echo e(url('/cEnrollments-list')); ?>">Class Enrollment</a>
                        </li>
                        <li>
-                           <a href="{{ url('/periods-list') }}">Period</a>
+                           <a href="<?php echo e(url('/periods-list')); ?>">Period</a>
                        </li>
                        <li>
-                           <a href="{{ url('/timeTable-list') }}">Time Table</a>
+                           <a href="<?php echo e(url('/timeTable-list')); ?>">Time Table</a>
                        </li>
                        <li>
-                           <a href="{{ url('timeTableReport') }}">Time Table Report</a>
+                           <a href="<?php echo e(url('timeTableReport')); ?>">Time Table Report</a>
                        </li>
                        <li>
-                           <a href="{{ url('attendanceReport') }}">Attendance Report</a>
+                           <a href="<?php echo e(url('attendanceReport')); ?>">Attendance Report</a>
                        </li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-folder"></i> Misc. <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
-                          <a href="{{ url('/sessions-list')}}">Session</a>
+                          <a href="<?php echo e(url('/sessions-list')); ?>">Session</a>
                       </li>
                       <li>
-                          <a href="{{ url('/classes-list')}}">Class</a>
+                          <a href="<?php echo e(url('/classes-list')); ?>">Class</a>
                       </li>
                       <li>
-                          <a href="{{ url('/categories-list')}}">Category</a>
+                          <a href="<?php echo e(url('/categories-list')); ?>">Category</a>
                       </li>
                       <li>
-                          <a href="{{ url('/sections-list')}}">Section</a>
+                          <a href="<?php echo e(url('/sections-list')); ?>">Section</a>
                       </li>
                       <li>
-                          <a href="{{ url('/years-list')}}">Year</a>
+                          <a href="<?php echo e(url('/years-list')); ?>">Year</a>
                       </li>
                       <li>
-                          <a href="{{ url('/subjects-list')}}">Subject</a>
+                          <a href="<?php echo e(url('/subjects-list')); ?>">Subject</a>
                       </li>
                       <li>
-                          <a href="{{ url('/days-list')}}">Day</a>
+                          <a href="<?php echo e(url('/days-list')); ?>">Day</a>
                       </li>
                       <li>
-                          <a href="{{ url('/months-list')}}">Month</a>
+                          <a href="<?php echo e(url('/months-list')); ?>">Month</a>
                       </li>
                       <li>
-                          <a href="{{ url('/time-list')}}">Time</a>
+                          <a href="<?php echo e(url('/time-list')); ?>">Time</a>
                       </li>
                       <li>
-                          <a href="{{ url('/classRooms-list')}}">Class Room</a>
+                          <a href="<?php echo e(url('/classRooms-list')); ?>">Class Room</a>
                       </li>
                       <li>
-                          <a href="{{ url('/employees-list')}}">Employes</a>
+                          <a href="<?php echo e(url('/employees-list')); ?>">Employes</a>
                       </li>
                     </ul>
                   </li>
                 <li><a><i class="fa fa-clipboard"></i>Examination<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                        <li>
-                           <a href="{{ url('/examTime-list')}}">Exam Timings</a>
+                           <a href="<?php echo e(url('/examTime-list')); ?>">Exam Timings</a>
                        </li>
                        <li>
-                           <a href="{{ url('/examTerm-list')}}">Exam Terms</a>
+                           <a href="<?php echo e(url('/examTerm-list')); ?>">Exam Terms</a>
                        </li>
                        <li>
-                           <a href="{{ url('/examSlot-list') }}">Exam Slot</a>
+                           <a href="<?php echo e(url('/examSlot-list')); ?>">Exam Slot</a>
                        </li>
                        <li>
-                           <a href="{{ url('/examSchedule-list') }}">Exam Schedule</a>
+                           <a href="<?php echo e(url('/examSchedule-list')); ?>">Exam Schedule</a>
                        </li>
                        <li>
-                           <a href="{{ url('/grades-list') }}">Grade</a>
+                           <a href="<?php echo e(url('/grades-list')); ?>">Grade</a>
                        </li>
                        <li>
-                           <a href="{{ url('/results-list') }}">Result</a>
-                       </li>
-                       <li>
-                           <a href="{{ url('/student-result') }}">Students Result</a>
+                           <a href="<?php echo e(url('/results-list')); ?>">Result</a>
                        </li>
                        
                     </ul>
@@ -128,27 +125,23 @@
                 <li><a><i class="fa fa-clipboard"></i>Salary<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                        <li>
-                           <a href="{{ url('/salaryChargTypes-list')}}">Salary Charges Type</a>
+                           <a href="<?php echo e(url('/salaryChargTypes-list')); ?>">Salary Charges Type</a>
                        </li>
                        <li>
-                           <a href="{{ url('/salaryChargCategory-list')}}">Salary Charges Category</a>
+                           <a href="<?php echo e(url('/salaryChargCategory-list')); ?>">Salary Charges Category</a>
                        </li>
                        <li>
-                           <a href="{{ url('/salaryChargHead-list')}}">Salary Charges Head</a>
+                           <a href="<?php echo e(url('/salaryChargHead-list')); ?>">Salary Charges Head</a>
                        </li>
                        <li>
-                           <a href="{{ url('/employeeGrade-list')}}">Employee Grade</a>
+                           <a href="<?php echo e(url('/employeeGrade-list')); ?>">Employee Grade</a>
                        </li>
                        <li>
-                           <a href="{{ url('/salaryCharges-list')}}">Salary Charges</a>
+                           <a href="<?php echo e(url('/salaryCharges-list')); ?>">Salary Charges</a>
                        </li>
                        <li>
-                         <a href="{{ url('payment/paymentlisting') }}">Payment</a>
+                           <a href="<?php echo e(url('/employeeSalary-list')); ?>">Employee Salary</a>
                        </li>
-                       <li>
-                           <a href="{{ url('/employeeSalary-list')}}">Employee Salary</a>
-                       </li>
-                       
                        
                     </ul>
                   </li>
@@ -179,4 +172,4 @@
         </div>
           
             <!-- /sidebar menu -->
-@endsection
+<?php $__env->stopSection(); ?>
