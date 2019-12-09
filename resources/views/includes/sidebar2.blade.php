@@ -137,11 +137,9 @@
                            <a href="{{ url('/employeeGrade-list')}}">Employee Grade</a>
                        </li>
                        <li>
-                           <a href="#">4</a>
+                           <a href="{{ url('payment/paymentlisting') }}">Payment</a>
                        </li>
-                       <li>
-                           <a href="#">5</a>
-                       </li>
+                       
                        
                     </ul>
                   </li>

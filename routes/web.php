@@ -274,7 +274,24 @@ Route::post('attendancesearch','Reports\AttendanceController@attendance_search')
 Route::post('markAttendence','AttendenceController@markattendence');	
 Route::get('student-result','ResultsController@student_result');	
 Route::post('result-search','ResultsController@result_search');	
-
+/*
+*
+*Payments
+*
+*/
+Route::prefix('payment')->middleware(['auth'])->group(function(){
+    Route::get('paymentlisting','payments\payment@paymentlisting');
+    Route::get('addpaymentform','payments\payment@addpaymentform');
+    Route::post('addpayment','payments\payment@addpayment');
+    Route::post('addpaymentsale','payments\payment@addpaymentsale');
+    Route::get('addsopayment/{receiptId}/{totalAmount}/{customerId}','payments\payment@addsopayment');
+    Route::get('financialyear','payments\payment@financialyear');
+    Route::get('addfinancialyear','payments\payment@addfinancialyear');
+    Route::post('addfnyear','payments\payment@add_fnyear');
+    Route::get('deleteyear/{id}','payments\payment@delete_year');
+    Route::post('checkamount','payments\payment@check_paid_amount');
+    Route::post('getaccountinfo','payments\payment@get_account_info');
+});
 
 Auth::routes();
 
