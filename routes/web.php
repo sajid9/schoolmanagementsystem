@@ -131,6 +131,15 @@ Route::get('/editDays/{id}','DaysController@edit');
 Route::post('updateDays','DaysController@update');
 Route::get('delDays/{id}','DaysController@destroy');
 
+		// months routes
+
+Route::get('/months','MonthsController@create');
+Route::post('/addMonth','MonthsController@store');
+Route::get('months-list','MonthsController@index');
+Route::get('/editMonths/{id}','MonthsController@edit');
+Route::post('updateMonth','MonthsController@update');
+Route::get('delMonths/{id}','MonthsController@destroy');
+
 		// time routes
 
 Route::get('/time','TimeController@create');
@@ -165,18 +174,7 @@ Route::get('editTimeTable/{id}','TimeTablesController@edit');
 Route::post('updateTimeTable','TimeTablesController@update');
 Route::get('delTimeTable/{id}','TimeTablesController@destroy');
 Route::get('attendence/{id}/{period_id}','TimeTablesController@attendence')->name('attendence');
-// Route::get('markattendence/{addmission_id}/{timeTable_id}','TimeTablesController@markattendence')->name('markattendence');
-// Route::post('markAttendence','TimeTablesController@markattendence');
 
-//Attendence routes
-Route::post('markAttendence','AttendenceController@markattendence');
-
-// Route::get('/attendence','AttendenceController@create');
-// Route::get('attendence-list','AttendenceController@index');
-// Route::post('/addAttendence','AttendenceController@store');
-// Route::get('editAttendence/{id}','AttendenceController@edit');
-// Route::post('updateAttendence','AttendenceController@update');
-// Route::get('delAttendence/{id}','AttendenceController@destroy');
 
 		// ExamTime routes
 
@@ -271,6 +269,28 @@ Route::get('employeeGrade-list','EmployeeGradeController@index');
 Route::get('/editEmployeeGrade/{id}','EmployeeGradeController@edit');
 Route::post('updateEmployeeGrade','EmployeeGradeController@update');
 Route::get('delEmployeeGrade/{id}','EmployeeGradeController@destroy');
+ 
+		
+		// salaryCharges routes
+
+Route::get('/salaryCharges','SalaryChargesController@create');
+Route::post('/addSalaryCharges','SalaryChargesController@store');
+Route::get('salaryCharges-list','SalaryChargesController@index');
+Route::get('/editSalaryCharges/{id}','SalaryChargesController@edit');
+Route::post('updateSalaryCharges','SalaryChargesController@update');
+Route::get('delSalaryCharges/{id}','SalaryChargesController@destroy');
+ 
+		
+		// employeeSalary routes
+
+Route::get('/employeeSalary','EmployeeSalaryController@create');
+Route::post('/addEmployeeSalary','EmployeeSalaryController@store');
+Route::get('employeeSalary-list','EmployeeSalaryController@index');
+Route::get('/editEmployeeSalary/{id}','EmployeeSalaryController@edit');
+Route::post('updateEmployeeSalary','EmployeeSalaryController@update');
+Route::get('delEmployeeSalary/{id}','EmployeeSalaryController@destroy');
+ 
+
 
 Route::get('admissionreport','AdmissionsController@admission_report');	
 Route::get('attendence/{id}','TimeTablesController@attendence')->name('attendence');	
