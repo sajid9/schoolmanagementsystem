@@ -178,6 +178,33 @@
                       </li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-clipboard"></i>Student Fee<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                       <li>
+                           <a href="{{ url('/feeChargTypes-list')}}">Fee Charges Type</a>
+                       </li>
+                       <li>
+                           <a href="{{ url('/feeChargCategory-list')}}">Fee Charges Category</a>
+                       </li>
+                       <li>
+                           <a href="{{ url('/feeChargHead-list')}}">Fee Charges Head</a>
+                       </li>
+                       <li>
+                           <a href="#">1</a>
+                       </li>
+                       <li>
+                           <a href="{{ url('/feeCharges-list')}}">Fee Charges</a>
+                       </li>
+                       <li>
+                         <a href="#">2</a>
+                       </li>
+                       <li>
+                           <a href="{{ url('/studentFee-list')}}">Student Fee</a>
+                       </li>
+                       
+                       
+                    </ul>
+                  </li>
                 </ul>
                 
               </div>

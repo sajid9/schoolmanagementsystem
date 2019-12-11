@@ -289,6 +289,33 @@ Route::get('/editEmployeeSalary/{id}','EmployeeSalaryController@edit');
 Route::post('updateEmployeeSalary','EmployeeSalaryController@update');
 Route::get('delEmployeeSalary/{id}','EmployeeSalaryController@destroy');
  
+ 		// feeChargTypes routes
+
+Route::get('/feeChargTypes','FeeChargTypeController@create');
+Route::post('/addFeeChargType','FeeChargTypeController@store');
+Route::get('feeChargTypes-list','FeeChargTypeController@index');
+Route::get('/editFeeChargType/{id}','FeeChargTypeController@edit');
+Route::post('updateFeeChargType','FeeChargTypeController@update');
+Route::get('delFeeChargType/{id}','FeeChargTypeController@destroy');
+		
+		// feeChargCategory routes
+
+Route::get('/feeChargCategory','FeeChargCategoryController@create');
+Route::post('/addFeeChargCategory','FeeChargCategoryController@store');
+Route::get('feeChargCategory-list','FeeChargCategoryController@index');
+Route::get('/editFeeChargCategory/{id}','FeeChargCategoryController@edit');
+Route::post('updateFeeChargCategory','FeeChargCategoryController@update');
+Route::get('delFeeChargCategory/{id}','FeeChargCategoryController@destroy');
+		
+		// feeChargHead routes
+
+Route::get('/feeChargHead','FeeChargHeadController@create');
+Route::post('/addFeeChargHead','FeeChargHeadController@store');
+Route::get('feeChargHead-list','FeeChargHeadController@index');
+Route::get('/editFeeChargHead/{id}','FeeChargHeadController@edit');
+Route::post('updateFeeChargHead','FeeChargHeadController@update');
+Route::get('delFeeChargHead/{id}','FeeChargHeadController@destroy');
+		
 
 
 /*
