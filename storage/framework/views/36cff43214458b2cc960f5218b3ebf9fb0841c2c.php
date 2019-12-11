@@ -31,87 +31,96 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-graduation-cap"></i>Academics<span class="fa fa-chevron-down"></span></a>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Registration<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                       <li>
-                           <a href="<?php echo e(url('/registeredStd')); ?>">Registration</a>
-                       </li>
-                       <li>
-                           <a href="<?php echo e(url('/admittedStd')); ?>">Admission</a>
-                       </li>
-                       <li>
-                           <a href="<?php echo e(url('/admissionreport')); ?>">Admission Report</a>
-                       </li>
-                       <li>
-                           <a href="<?php echo e(url('/batches-list')); ?>">Batch</a>
-                       </li>
-                       <li>
-                           <a href="<?php echo e(url('/cEnrollments-list')); ?>">Class Enrollment</a>
-                       </li>
-                       <li>
-                           <a href="<?php echo e(url('/periods-list')); ?>">Period</a>
-                       </li>
-                       <li>
-                           <a href="<?php echo e(url('/timeTable-list')); ?>">Time Table</a>
-                       </li>
-                       <li>
-                           <a href="<?php echo e(url('timeTableReport')); ?>">Time Table Report</a>
-                       </li>
-                       <li>
-                           <a href="<?php echo e(url('attendanceReport')); ?>">Attendance Report</a>
+                      <li>
+                        <a href="<?php echo e(url('/sessions-list')); ?>">Session</a>
+                      </li>
+                      <li>
+                          <a href="<?php echo e(url('/registeredStd')); ?>">Register</a>
                        </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-folder"></i> Misc. <span class="fa fa-chevron-down"></span></a>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Admission<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li>
-                          <a href="<?php echo e(url('/sessions-list')); ?>">Session</a>
-                      </li>
-                      <li>
-                          <a href="<?php echo e(url('/classes-list')); ?>">Class</a>
-                      </li>
                       <li>
                           <a href="<?php echo e(url('/categories-list')); ?>">Category</a>
                       </li>
                       <li>
-                          <a href="<?php echo e(url('/sections-list')); ?>">Section</a>
+                           <a href="<?php echo e(url('/admittedStd')); ?>">Admission</a>
+                       </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Batch<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li>
+                        <a href="<?php echo e(url('/classes-list')); ?>">Class</a>
                       </li>
                       <li>
-                          <a href="<?php echo e(url('/years-list')); ?>">Year</a>
+                        <a href="<?php echo e(url('/sections-list')); ?>">Section</a>
                       </li>
                       <li>
-                          <a href="<?php echo e(url('/subjects-list')); ?>">Subject</a>
-                      </li>
-                      <li>
-                          <a href="<?php echo e(url('/days-list')); ?>">Day</a>
-                      </li>
-                      <li>
-                          <a href="<?php echo e(url('/time-list')); ?>">Time</a>
-                      </li>
-                      <li>
-                          <a href="<?php echo e(url('/classRooms-list')); ?>">Class Room</a>
-                      </li>
-                      <li>
-                          <a href="<?php echo e(url('/employees-list')); ?>">Employes</a>
+                        <a href="<?php echo e(url('/batches-list')); ?>">Batch</a>
                       </li>
                     </ul>
                   </li>
-                <li><a><i class="fa fa-clipboard"></i>Examination<span class="fa fa-chevron-down"></span></a>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Enrollment<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                       <li>
-                           <a href="<?php echo e(url('/examTime-list')); ?>">Exam Timings</a>
+                      <li>
+                        <a href="<?php echo e(url('/cEnrollments-list')); ?>">Class Enrollment</a>
+                       </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Time Table<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li>
+                        <a href="<?php echo e(url('/days-list')); ?>">Period Day</a>
+                      </li>
+                      <li>
+                        <a href="<?php echo e(url('/time-list')); ?>">Period Time</a>
+                      </li>
+                      <li>
+                        <a href="<?php echo e(url('/classRooms-list')); ?>">Class Room</a>
+                      </li>
+                      <li>
+                        <a href="<?php echo e(url('/subjects-list')); ?>">Subject</a>
+                      </li>
+                      <li>
+                          <a href="<?php echo e(url('/timeTable-list')); ?>">Time Table</a>
                        </li>
                        <li>
-                           <a href="<?php echo e(url('/examTerm-list')); ?>">Exam Terms</a>
+                          <a href="<?php echo e(url('timeTableReport')); ?>">Time Table Report</a>
+                       </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Attendance<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li>
+                        <a href="<?php echo e(url('attendanceReport')); ?>">Attendance Report</a>
+                       </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Examination<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li>
+                           <a href="<?php echo e(url('/examTime-list')); ?>">Exam Timings</a>
                        </li>
                        <li>
                            <a href="<?php echo e(url('/examSlot-list')); ?>">Exam Slot</a>
                        </li>
                        <li>
-                           <a href="<?php echo e(url('/examSchedule-list')); ?>">Exam Schedule</a>
+                           <a href="<?php echo e(url('/examTerm-list')); ?>">Exam Terms</a>
                        </li>
+                       
                        <li>
-                           <a href="<?php echo e(url('/grades-list')); ?>">Grade</a>
+                           <a href="<?php echo e(url('/examSchedule-list')); ?>">Exam Schedule</a>
                        </li>
                        <li>
                            <a href="<?php echo e(url('/results-list')); ?>">Result</a>
@@ -119,33 +128,58 @@
                        <li>
                            <a href="<?php echo e(url('/student-result')); ?>">Students Result</a>
                        </li>
-                       
                     </ul>
                   </li>
-                <li><a><i class="fa fa-clipboard"></i>Salary<span class="fa fa-chevron-down"></span></a>
+                  <li>
+                    <a><i class="fa fa-clipboard"></i>Salary<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                        <li>
-                           <a href="<?php echo e(url('/salaryChargTypes-list')); ?>">Salary Charges Type</a>
+                          <a href="<?php echo e(url('/salaryChargTypes-list')); ?>">Salary Type</a>
                        </li>
                        <li>
-                           <a href="<?php echo e(url('/salaryChargCategory-list')); ?>">Salary Charges Category</a>
+                          <a href="<?php echo e(url('/salaryChargCategory-list')); ?>">Salary Category</a>
                        </li>
                        <li>
-                           <a href="<?php echo e(url('/salaryChargHead-list')); ?>">Salary Charges Head</a>
+                          <a href="<?php echo e(url('/salaryChargHead-list')); ?>">Salary Head</a>
                        </li>
                        <li>
-                           <a href="<?php echo e(url('/employeeGrade-list')); ?>">Employee Grade</a>
+                          <a href="<?php echo e(url('/salaryCharges-list')); ?>">Charges</a>
                        </li>
                        <li>
-                           <a href="<?php echo e(url('payment/paymentlisting')); ?>">Payment</a>
+                          <a href="<?php echo e(url('/employeeSalary-list')); ?>">Salary</a>
                        </li>
-                       
-                       
                     </ul>
                   </li>
-
-                  
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Employee<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li>
+                          <a href="<?php echo e(url('/employeeGrade-list')); ?>">Grade</a>
+                       </li>
+                      <li>
+                          <a href="<?php echo e(url('/employees-list')); ?>">Employee</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a><i class="fa fa-clipboard"></i>Expenditure<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li>
+                        <a href="<?php echo e(url('expenditure/headlisting')); ?>">Head</a>
+                      </li>
+                      <li>
+                        <a href="<?php echo e(url('payment/financialyear')); ?>">Financial Year</a>
+                      </li>
+                      <li>
+                        <a href="<?php echo e(url('account/accountlisting')); ?>">Accounts</a>
+                      </li>
+                      <li>
+                        <a href="<?php echo e(url('payment/paymentlisting')); ?>">Payment</a>
+                      </li>
+                    </ul>
+                  </li>
                 </ul>
+                
               </div>
             </div>
             <!-- /sidebar menu -->

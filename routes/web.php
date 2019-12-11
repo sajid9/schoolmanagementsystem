@@ -322,7 +322,34 @@ Route::prefix('payment')->middleware(['auth'])->group(function(){
     Route::post('checkamount','payments\payment@check_paid_amount');
     Route::post('getaccountinfo','payments\payment@get_account_info');
 });
-
+Route::prefix('account')->middleware(['auth'])->group(function(){
+	Route::get('accounts','Account\AccountController@opening_account');
+    Route::post('saveaccount','Account\AccountController@save_account');
+    Route::get('accountlisting','Account\AccountController@account_listing');
+});
+/*
+*
+*expenditure
+*
+*/
+Route::prefix('expenditure')->middleware(['auth'])->group(function(){
+    Route::get('headlisting','expenditure\expenditure@headlisting');
+    Route::get('addhead','expenditure\expenditure@addhead');
+    Route::post('savehead','expenditure\expenditure@savehead');
+    Route::get('edithead/{id}','expenditure\expenditure@edithead');
+    Route::post('updatehead','expenditure\expenditure@updatehead');
+    Route::get('subheadlisting/{id}','expenditure\expenditure@subheadlisting');
+    Route::get('addsubhead/{id}','expenditure\expenditure@addsubhead');
+    Route::post('savesubhead','expenditure\expenditure@savesubhead');
+    Route::get('editsubhead/{id}','expenditure\expenditure@editsubhead');
+    Route::post('updatesubhead','expenditure\expenditure@updatesubhead');
+    Route::get('monthlisting','expenditure\expenditure@monthlisting');
+    Route::get('addmonthform','expenditure\expenditure@addmonthform');
+    Route::post('addmonth','expenditure\expenditure@addmonth');
+    Route::get('editmonth/{id}','expenditure\expenditure@editmonth');
+    Route::post('updatemonth','expenditure\expenditure@updatemonth');
+    Route::post('getsubhead','expenditure\expenditure@getsubhead');
+});
 Auth::routes();
 
 

@@ -1,100 +1,93 @@
-{{-- extend  --}}
-@extends('layouts.app2')
-@extends('includes.header2')
-@extends('includes.footer2')
-@extends('includes.sidebar2')
+<?php $__env->startSection('title', 'Dashboard'); ?>
+<?php $__env->startSection('pagetitle', 'Payments'); ?>
 
-{{-- page titles --}}
-@section('title', 'Dashboard')
-@section('pagetitle', 'Payments')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="panel panel-default">
 <div class="panel-heading">
     Payment
 </div>
 <div class="panel-body">
 
-{{-- form start  --}}
-<form method="post" action="{{url('payment/addpayment')}}">
-	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+<form method="post" action="<?php echo e(url('payment/addpayment')); ?>">
+	<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
   <div class="form-group">
     <label for="paytype">Select Receipt Type</label>
     <select name="paytype" required="required" class="form-control" id="paytype" aria-describedby="paytype_msg">
       <option value=""> Select type</option>
       <option value="EX">Expenditure (EXP)</option>
     </select>
-    <small id="paytype_msg" class="form-text text-muted text-danger">{{$errors->first('paytype')}}</small>
+    <small id="paytype_msg" class="form-text text-muted text-danger"><?php echo e($errors->first('paytype')); ?></small>
   </div>
   <div id="append_con">
     
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button> <a href="{{url('payment/paymentlisting')}}" class="btn btn-default">Back</a>
+  <button type="submit" class="btn btn-primary">Submit</button> <a href="<?php echo e(url('payment/paymentlisting')); ?>" class="btn btn-default">Back</a>
 </form>
-{{-- form end --}}
+
 
 </div>
 </div>
 
 
-{{-- expenditure template --}}
+
 <template id="exp_con">
   <div class="form-group">
     <label for="account">Account <span class="text-danger">*</span></label>
     <select name="account" required="required" class="form-control" id="account" aria-describedby="account_msg">
       <option value=""> Select Account</option>
-      @foreach($accounts as $account)
-      <option value="{{$account->id}}">{{$account->account_title}}</option>
-      @endforeach
+      <?php $__currentLoopData = $accounts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $account): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <option value="<?php echo e($account->id); ?>"><?php echo e($account->account_title); ?></option>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </select>
-    <small id="account_msg" class="form-text text-muted text-danger">{{$errors->first('account')}}</small>
+    <small id="account_msg" class="form-text text-muted text-danger"><?php echo e($errors->first('account')); ?></small>
   </div>
   <div class="form-group">
     <label for="amount">Amount <span class="text-danger">*</span></label>
-    <input type="number" required="required" name="amount" value="{{old('amount')}}" class="form-control" id="amount" aria-describedby="amount" placeholder="enter the amount">
-    <small id="amount" class="form-text text-muted text-danger">{{$errors->first('amount')}}</small>
+    <input type="number" required="required" name="amount" value="<?php echo e(old('amount')); ?>" class="form-control" id="amount" aria-describedby="amount" placeholder="enter the amount">
+    <small id="amount" class="form-text text-muted text-danger"><?php echo e($errors->first('amount')); ?></small>
   </div>
   <div class="form-group">
     <label for="month">month <span class="text-danger">*</span></label>
     <select name="month" class="form-control" id="month" aria-describedby="month_msg">
       <option value=""> Select Month</option>
-      @foreach($months as $month)
-      <option value="{{$month->id}}">{{$month->month_name}}</option>
-      @endforeach
+      <?php $__currentLoopData = $months; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $month): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <option value="<?php echo e($month->id); ?>"><?php echo e($month->month_name); ?></option>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </select>
-    <small id="month" class="form-text text-muted text-danger">{{$errors->first('month')}}</small>
+    <small id="month" class="form-text text-muted text-danger"><?php echo e($errors->first('month')); ?></small>
   </div>
   <div class="form-group">
     <label for="fn_year">Fianancial Year</label>
     <select name="fn_year" class="form-control" id="fn_year" aria-describedby="fn_year">
       <option value=""> Select Fianancial Year</option>
-      @foreach($years as $year)
-      <option>{{$year->year}}</option>
-      @endforeach
+      <?php $__currentLoopData = $years; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $year): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <option><?php echo e($year->year); ?></option>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </select>
-    <small id="fn_year" class="form-text text-muted text-danger">{{$errors->first('fn_year')}}</small>
+    <small id="fn_year" class="form-text text-muted text-danger"><?php echo e($errors->first('fn_year')); ?></small>
   </div>
   <div class="form-group">
     <label for="description">Description <span class="text-danger">*</span></label>
-    <textarea name="description" class="form-control" id="description" aria-describedby="description" placeholder="enter the description">{{old('description')}}</textarea>
-    <small id="description" class="form-text text-muted text-danger">{{$errors->first('description')}}</small>
+    <textarea name="description" class="form-control" id="description" aria-describedby="description" placeholder="enter the description"><?php echo e(old('description')); ?></textarea>
+    <small id="description" class="form-text text-muted text-danger"><?php echo e($errors->first('description')); ?></small>
   </div>
   <div class="form-group">
     <label for="head">Exp Head</label>
     <select name="head" class="form-control" id="head" aria-describedby="head">
       <option value=""> Select Head</option>
-      @foreach($heads as $head)
-      <option value="{{$head->id}}">{{$head->name}}</option>
-      @endforeach
+      <?php $__currentLoopData = $heads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $head): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <option value="<?php echo e($head->id); ?>"><?php echo e($head->name); ?></option>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </select>
-    <small id="head" class="form-text text-muted text-danger">{{$errors->first('head')}}</small>
+    <small id="head" class="form-text text-muted text-danger"><?php echo e($errors->first('head')); ?></small>
   </div>
   <div class="form-group">
     <label for="subhead">Exp Subhead</label>
     <select name="subhead" class="form-control" id="subhead" aria-describedby="subhead">
       <option value=""> Select Subhead</option>
     </select>
-    <small id="subhead" class="form-text text-muted text-danger">{{$errors->first('subhead')}}</small>
+    <small id="subhead" class="form-text text-muted text-danger"><?php echo e($errors->first('subhead')); ?></small>
   </div>
   <div class="form-group">
     <label for="headtype">Headtype</label>
@@ -103,7 +96,7 @@
       <option value="1">monthly</option>
       <option value="2">setup</option>
     </select>
-    <small id="headtype" class="form-text text-muted text-danger">{{$errors->first('headtype')}}</small>
+    <small id="headtype" class="form-text text-muted text-danger"><?php echo e($errors->first('headtype')); ?></small>
   </div>
   <div class="checkbox">
     <label><input type="checkbox" name="salary" id="salary" value="checked">Salary</label>
@@ -116,12 +109,12 @@
       <option value="2">muhammad wajid</option>
       <option value="3">khan</option>
     </select>
-    <small id="employee" class="form-text text-muted text-danger">{{$errors->first('employee')}}</small>
+    <small id="employee" class="form-text text-muted text-danger"><?php echo e($errors->first('employee')); ?></small>
   </div>
 </template>
-@endsection
-@section('footer')
-@parent
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('footer'); ?>
+##parent-placeholder-d7eb6b340a11a367a1bec55e4a421d949214759f##
 <script>
 $(document).on('change', '#salary', function() {
   if(this.checked) {
@@ -141,10 +134,10 @@ $('#paytype').on('change',function(){
 $(document).on('change','#account',function(){
   var id = $(this).val();
   $.ajax({
-    url:"{{url('payment/getaccountinfo')}}",
+    url:"<?php echo e(url('payment/getaccountinfo')); ?>",
     type:"post",
     dataType:"json",
-    data:{id:id,_token:"{{csrf_token()}}"},
+    data:{id:id,_token:"<?php echo e(csrf_token()); ?>"},
     success:function(res){
       $('#bal_amount_account').val(res.left_bal);
     }
@@ -153,8 +146,8 @@ $(document).on('change','#account',function(){
 $(document).on('change','#voucherId',function(){
   var val = $(this).val();
   $.ajax({
-    url:"{{url('voucher/selectsupplier')}}",
-    data:{id:val,_token:"{{csrf_token()}}"},
+    url:"<?php echo e(url('voucher/selectsupplier')); ?>",
+    data:{id:val,_token:"<?php echo e(csrf_token()); ?>"},
     type:"post",
     dataType:"json",
     success:function(res){
@@ -168,8 +161,8 @@ $(document).on('change','#voucherId',function(){
 $(document).on('change','#receipt',function(){
   var val = $(this).val();
   $.ajax({
-    url:"{{url('sale/selectcustomer')}}",
-    data:{id:val,_token:"{{csrf_token()}}"},
+    url:"<?php echo e(url('sale/selectcustomer')); ?>",
+    data:{id:val,_token:"<?php echo e(csrf_token()); ?>"},
     type:"post",
     dataType:"json",
     success:function(res){
@@ -183,8 +176,8 @@ $(document).on('change','#receipt',function(){
 $(document).on('change','#head',function(){
   var val = $(this).val();
   $.ajax({
-    url:"{{url('expenditure/getsubhead')}}",
-    data:{id:val,_token:"{{csrf_token()}}"},
+    url:"<?php echo e(url('expenditure/getsubhead')); ?>",
+    data:{id:val,_token:"<?php echo e(csrf_token()); ?>"},
     type:"post",
     dataType:"json",
     success:function(res){
@@ -200,14 +193,14 @@ $(document).on('blur','#amount',function(){
   var data = {};
       data.voucher = $('#voucherId').val();
       data.amount  = parseInt($(this).val());
-      data._token  = "{{csrf_token()}}";
+      data._token  = "<?php echo e(csrf_token()); ?>";
       if(data.voucher == ''){
         alert('please select the voucher first');
         $('#amount').val('');
         return 0;
       }
   $.ajax({
-    url:'{{url("payment/checkamount")}}',
+    url:'<?php echo e(url("payment/checkamount")); ?>',
     type:'post',
     dataType:'json',
     data:data,
@@ -238,4 +231,8 @@ $(document).on('blur','#amount_receipt',function(){
 })
 
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('includes.sidebar2', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('includes.footer2', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('includes.header2', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.app2', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

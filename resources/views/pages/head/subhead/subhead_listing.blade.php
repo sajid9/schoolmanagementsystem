@@ -6,7 +6,7 @@
 
 {{-- page titles --}}
 @section('title', 'Dashboard')
-@section('pagetitle', 'Financial Year')
+@section('pagetitle', 'Subhead')
 
 {{-- add css which use only for this page --}}
 @section('header')
@@ -19,8 +19,8 @@
 @section('content')
 <div class="row" style="padding-bottom: 10px">
 	<div class="col-md-12">
-		<a href="{{url('payment/addfinancialyear')}}" class="btn btn-social btn-bitbucket pull-right">
-		    <i class="fa fa-plus"></i> Add Financial Year
+		<a href="{{url('expenditure/addsubhead/'.Request::segment(3))}}" class="btn btn-social btn-bitbucket pull-right">
+		    <i class="fa fa-plus"></i> Add Subhead
 		</a>
 	</div>
 </div>
@@ -28,28 +28,33 @@
 	<div class="col-md-12">
 		{{-- alets messages --}}		
 		@include('includes.alerts')
-		
+
 		{{-- panel start --}}
 		<div class="panel panel-default">
 		    <div class="panel-heading">
-		        Financial Year Listing
+		        Subhead Listing
 		    </div>
 		    <div class="panel-body">
 			    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 			        <thead>
 			            <tr>
 			                <th>Sr#</th>
-			                <th>Financial Year</th>
-			                {{-- <th>Action</th> --}}
+			                <th>Head Name</th>
+			                <th>Subhead Name</th>
+			                <th>Status</th>
+			                <th>Action</th>
 			            </tr>
 			        </thead>
 			        <tbody>
 			        	<?php $count = 0; ?>
-			        	@foreach($years as $year)
+			        	@foreach($subheads as $subhead)
 			            <tr class="odd gradeX">
 			                <td>{{ ++$count }}</td>
-			                <td>{{ $year->year }}</td>
-			                {{-- <td><a onclick="deletepayment('{{$year->id}}')"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a></td> --}}
+			                <td>{{ isset($subhead->head) ? $subhead->head->name : '' }}</td>
+			                <td>{{ $subhead->name }}</td>
+			                <td>{!!($subhead->is_active == 'yes')? '<span class="label label-primary">active</span>' :'<span class="label label-danger">inactive</span>'!!}</td>
+			                <td><a class="btn btn-xs btn-warning" href="{{url('expenditure/editsubhead/'.$subhead->id)}}"><i class="fa fa-edit" title="Edit" data-toggle="tooltip"></i></a> {{-- <a onclick="deleteCompany('{{$company->id}}')"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a> --}}</td>
+			                
 			            </tr>
 			            @endforeach
 			        </tbody>
@@ -75,9 +80,9 @@
 	        });
 	        $('[data-toggle="tooltip"]').tooltip();
 	    });
-	    function deletepayment(id){
+	    function deleteCompany(id){
 	    	if(window.confirm('do you really wanna delete this record?')){
-	    		var url = '{{url('payment/deleteyear')}}';
+	    		var url = '{{url('company/deletecompany')}}';
 	    		window.location.href = url+'/'+id;
 	    	}
 	    }

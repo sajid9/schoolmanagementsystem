@@ -6,7 +6,7 @@
 
 {{-- page titles --}}
 @section('title', 'Dashboard')
-@section('pagetitle', 'Financial Year')
+@section('pagetitle', 'Account Listing')
 
 {{-- add css which use only for this page --}}
 @section('header')
@@ -19,8 +19,8 @@
 @section('content')
 <div class="row" style="padding-bottom: 10px">
 	<div class="col-md-12">
-		<a href="{{url('payment/addfinancialyear')}}" class="btn btn-social btn-bitbucket pull-right">
-		    <i class="fa fa-plus"></i> Add Financial Year
+		<a href="{{url('account/accounts')}}" class="btn btn-social btn-bitbucket pull-right">
+		    <i class="fa fa-plus"></i> Add Account
 		</a>
 	</div>
 </div>
@@ -32,24 +32,34 @@
 		{{-- panel start --}}
 		<div class="panel panel-default">
 		    <div class="panel-heading">
-		        Financial Year Listing
+		        Account Listing
 		    </div>
 		    <div class="panel-body">
 			    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 			        <thead>
 			            <tr>
 			                <th>Sr#</th>
-			                <th>Financial Year</th>
-			                {{-- <th>Action</th> --}}
+			                <th>Account Title</th>
+			                <th>Date</th>
+			                <th>Balance</th>
+			                <th>Net Balance</th>
+			                <th>Branch Name</th>
+			                <th>Branch Code</th>
+			                <th>Account Number</th>
 			            </tr>
 			        </thead>
 			        <tbody>
 			        	<?php $count = 0; ?>
-			        	@foreach($years as $year)
+			        	@foreach($accounts as $account)
 			            <tr class="odd gradeX">
 			                <td>{{ ++$count }}</td>
-			                <td>{{ $year->year }}</td>
-			                {{-- <td><a onclick="deletepayment('{{$year->id}}')"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a></td> --}}
+			                <td>{{ $account->account_title }}</td>
+			                <td>{{ $account->date }}</td>
+			                <td>{{ $account->balance }}</td>
+			                <td>{{ $account->left_bal }}</td>
+			                <td>{{ $account->account_name }}</td>
+			                <td>{{ $account->branch_code }}</td>
+			                <td>{{ $account->account_number }}</td>
 			            </tr>
 			            @endforeach
 			        </tbody>
@@ -75,11 +85,6 @@
 	        });
 	        $('[data-toggle="tooltip"]').tooltip();
 	    });
-	    function deletepayment(id){
-	    	if(window.confirm('do you really wanna delete this record?')){
-	    		var url = '{{url('payment/deleteyear')}}';
-	    		window.location.href = url+'/'+id;
-	    	}
-	    }
+	   
 	</script>
 @endsection

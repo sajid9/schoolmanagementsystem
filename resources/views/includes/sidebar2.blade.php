@@ -31,90 +31,96 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-graduation-cap"></i>Academics<span class="fa fa-chevron-down"></span></a>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Registration<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                       <li>
-                           <a href="{{ url('/registeredStd')}}">Registration</a>
-                       </li>
-                       <li>
-                           <a href="{{ url('/admittedStd')}}">Admission</a>
-                       </li>
-                       <li>
-                           <a href="{{ url('/admissionreport')}}">Admission Report</a>
-                       </li>
-                       <li>
-                           <a href="{{ url('/batches-list') }}">Batch</a>
-                       </li>
-                       <li>
-                           <a href="{{ url('/cEnrollments-list') }}">Class Enrollment</a>
-                       </li>
-                       <li>
-                           <a href="{{ url('/periods-list') }}">Period</a>
-                       </li>
-                       <li>
-                           <a href="{{ url('/timeTable-list') }}">Time Table</a>
-                       </li>
-                       <li>
-                           <a href="{{ url('timeTableReport') }}">Time Table Report</a>
-                       </li>
-                       <li>
-                           <a href="{{ url('attendanceReport') }}">Attendance Report</a>
+                      <li>
+                        <a href="{{ url('/sessions-list')}}">Session</a>
+                      </li>
+                      <li>
+                          <a href="{{ url('/registeredStd')}}">Register</a>
                        </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-folder"></i> Misc. <span class="fa fa-chevron-down"></span></a>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Admission<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li>
-                          <a href="{{ url('/sessions-list')}}">Session</a>
-                      </li>
-                      <li>
-                          <a href="{{ url('/classes-list')}}">Class</a>
-                      </li>
                       <li>
                           <a href="{{ url('/categories-list')}}">Category</a>
                       </li>
                       <li>
-                          <a href="{{ url('/sections-list')}}">Section</a>
+                           <a href="{{ url('/admittedStd')}}">Admission</a>
+                       </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Batch<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li>
+                        <a href="{{ url('/classes-list')}}">Class</a>
                       </li>
                       <li>
-                          <a href="{{ url('/years-list')}}">Year</a>
+                        <a href="{{ url('/sections-list')}}">Section</a>
                       </li>
                       <li>
-                          <a href="{{ url('/subjects-list')}}">Subject</a>
-                      </li>
-                      <li>
-                          <a href="{{ url('/days-list')}}">Day</a>
-                      </li>
-                      <li>
-                          <a href="{{ url('/months-list')}}">Month</a>
-                      </li>
-                      <li>
-                          <a href="{{ url('/time-list')}}">Time</a>
-                      </li>
-                      <li>
-                          <a href="{{ url('/classRooms-list')}}">Class Room</a>
-                      </li>
-                      <li>
-                          <a href="{{ url('/employees-list')}}">Employes</a>
+                        <a href="{{ url('/batches-list') }}">Batch</a>
                       </li>
                     </ul>
                   </li>
-                <li><a><i class="fa fa-clipboard"></i>Examination<span class="fa fa-chevron-down"></span></a>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Enrollment<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                       <li>
-                           <a href="{{ url('/examTime-list')}}">Exam Timings</a>
+                      <li>
+                        <a href="{{ url('/cEnrollments-list') }}">Class Enrollment</a>
+                       </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Time Table<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li>
+                        <a href="{{ url('/days-list')}}">Period Day</a>
+                      </li>
+                      <li>
+                        <a href="{{ url('/time-list')}}">Period Time</a>
+                      </li>
+                      <li>
+                        <a href="{{ url('/classRooms-list')}}">Class Room</a>
+                      </li>
+                      <li>
+                        <a href="{{ url('/subjects-list')}}">Subject</a>
+                      </li>
+                      <li>
+                          <a href="{{ url('/timeTable-list') }}">Time Table</a>
                        </li>
                        <li>
-                           <a href="{{ url('/examTerm-list')}}">Exam Terms</a>
+                          <a href="{{ url('timeTableReport') }}">Time Table Report</a>
+                       </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Attendance<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li>
+                        <a href="{{ url('attendanceReport') }}">Attendance Report</a>
+                       </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Examination<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li>
+                           <a href="{{ url('/examTime-list')}}">Exam Timings</a>
                        </li>
                        <li>
                            <a href="{{ url('/examSlot-list') }}">Exam Slot</a>
                        </li>
                        <li>
-                           <a href="{{ url('/examSchedule-list') }}">Exam Schedule</a>
+                           <a href="{{ url('/examTerm-list')}}">Exam Terms</a>
                        </li>
+                       
                        <li>
-                           <a href="{{ url('/grades-list') }}">Grade</a>
+                           <a href="{{ url('/examSchedule-list') }}">Exam Schedule</a>
                        </li>
                        <li>
                            <a href="{{ url('/results-list') }}">Result</a>
@@ -122,39 +128,58 @@
                        <li>
                            <a href="{{ url('/student-result') }}">Students Result</a>
                        </li>
-                       
                     </ul>
                   </li>
-                <li><a><i class="fa fa-clipboard"></i>Salary<span class="fa fa-chevron-down"></span></a>
+                  <li>
+                    <a><i class="fa fa-clipboard"></i>Salary<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                        <li>
-                           <a href="{{ url('/salaryChargTypes-list')}}">Salary Charges Type</a>
+                          <a href="{{ url('/salaryChargTypes-list')}}">Salary Type</a>
                        </li>
                        <li>
-                           <a href="{{ url('/salaryChargCategory-list')}}">Salary Charges Category</a>
+                          <a href="{{ url('/salaryChargCategory-list')}}">Salary Category</a>
                        </li>
                        <li>
-                           <a href="{{ url('/salaryChargHead-list')}}">Salary Charges Head</a>
+                          <a href="{{ url('/salaryChargHead-list')}}">Salary Head</a>
                        </li>
                        <li>
-                           <a href="{{ url('/employeeGrade-list')}}">Employee Grade</a>
+                          <a href="{{ url('/salaryCharges-list')}}">Charges</a>
                        </li>
                        <li>
-                           <a href="{{ url('/salaryCharges-list')}}">Salary Charges</a>
+                          <a href="{{ url('/employeeSalary-list')}}">Salary</a>
                        </li>
-                       <li>
-                         <a href="{{ url('payment/paymentlisting') }}">Payment</a>
-                       </li>
-                       <li>
-                           <a href="{{ url('/employeeSalary-list')}}">Employee Salary</a>
-                       </li>
-                       
-                       
                     </ul>
                   </li>
-
-                  
+                  <li>
+                    <a><i class="fa fa-graduation-cap"></i>Employee<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li>
+                          <a href="{{ url('/employeeGrade-list')}}">Grade</a>
+                       </li>
+                      <li>
+                          <a href="{{ url('/employees-list')}}">Employee</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a><i class="fa fa-clipboard"></i>Expenditure<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li>
+                        <a href="{{ url('expenditure/headlisting')}}">Head</a>
+                      </li>
+                      <li>
+                        <a href="{{ url('payment/financialyear')}}">Financial Year</a>
+                      </li>
+                      <li>
+                        <a href="{{ url('account/accountlisting') }}">Accounts</a>
+                      </li>
+                      <li>
+                        <a href="{{ url('payment/paymentlisting') }}">Payment</a>
+                      </li>
+                    </ul>
+                  </li>
                 </ul>
+                
               </div>
             </div>
             <!-- /sidebar menu -->

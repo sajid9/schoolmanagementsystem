@@ -1,5 +1,5 @@
 {{-- extend  --}}
-@extends('layout.app2')
+@extends('layouts.app2')
 @extends('includes.header2')
 @extends('includes.footer2')
 @extends('includes.sidebar2')
@@ -17,7 +17,7 @@
 
 {{-- form start  --}}
 <form method="post" action="{{url('payment/addfnyear')}}">
-	@csrf
+  <input type="hidden" name="_token" value="{{csrf_token()}}">
   <div class="form-group">
     <label for="year">Financial Year <span class="text-danger">*</span></label>
     <input type="text" name="fn_year" value="{{old('fn_year')}}" class="form-control" id="year" aria-describedby="year" placeholder="Add Financial Year">
