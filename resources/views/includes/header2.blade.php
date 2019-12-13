@@ -14,6 +14,7 @@
     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/bootstrap-toggle.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/jquery.toast.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
      <!-- iCheck -->
     <link href="{{ asset('assets/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
     @endsection

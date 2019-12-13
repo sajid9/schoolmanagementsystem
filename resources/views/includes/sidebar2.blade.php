@@ -205,6 +205,16 @@
                        
                     </ul>
                   </li>
+                  <li class="customactive"><a><i class="fa fa-table"></i>Applicants <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu customshowul">
+                      <li><a href="{{ route('applicant') }}">Register Applicant</a></li>
+                      <li><a href="{{ route('shortlisting') }}"> Applicant Shortlisting </a></li>
+                      <li><a href="{{ route('allshortlisted') }}"> Applicant Selection </a></li>
+                      <li><a href="{{ route('applicantdesignation') }}">Add Designations</a></li>
+                      <li><a href="{{ route('contracts') }}">Contracts</a></li>
+                      <li><a href="{{ route('joining') }}">joining </a></li>
+                    </ul>
+                  </li>
                 </ul>
                 
               </div>

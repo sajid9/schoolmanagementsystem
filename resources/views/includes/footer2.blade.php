@@ -20,6 +20,8 @@
     <script src="{{ asset('assets/js/select2.min.js')}}"></script>
     <script src="{{ asset('assets/js/bootstrap-toggle.min.js')}}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/js/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap-datetimepicker.min.js') }}"></script>
     <!-- iCheck -->
     <script src="{{ asset('assets/vendors/iCheck/icheck.min.js')}}"></script>
 @endsection
