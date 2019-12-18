@@ -400,6 +400,97 @@ Route::prefix('expenditure')->middleware(['auth'])->group(function(){
     Route::post('updatemonth','expenditure\expenditure@updatemonth');
     Route::post('getsubhead','expenditure\expenditure@getsubhead');
 });
+/*
+*
+*Applicants Routes
+*
+*/
+/*
+*/
+Route::prefix('applicant')->middleware(['auth'])->group(function(){
+Route::get('applicant','Applicant\Applicant@index')->name("applicant");
+Route::get('addapplicant','Applicant\Applicant@addview')->name("addapplicant");
+///crud opertion routes are here
+Route::post('insertapplicant','Applicant\Applicant@insertapplicant')->name("insertapplicant");
+Route::get('editapplicant/{id}','Applicant\Applicant@editview')->name("editapplicant");
+Route::post('updateapplicant/{id}','Applicant\Applicant@updateapplicant')->name("updateapplicant");
+Route::get('viewapplicant/{id}','Applicant\Applicant@viewapplicant')->name("viewapplicant");
+Route::get('applicantdel/{id}','Applicant\Applicant@applicantdel')->name("applicantdel");
+});
+/*
+*
+*Shortlisting Routes
+*
+*/
+/*
+*/
+Route::prefix('applicant')->middleware(['auth'])->group(function(){
+	Route::get('shortlistingtable','Shortlisting\Shortlisting@shortlistingtable')->name("shortlistingtable");
+	Route::get('shortlistingtableview/{id}','Shortlisting\Shortlisting@shortlistingtableview')->name("shortlistingtableview");
+Route::get('shortlisting','Shortlisting\Shortlisting@index')->name("shortlisting");
+Route::post('shortlistingfilter','Shortlisting\Shortlisting@shortlistingfilter')->name("shortlistingfilter");
+Route::get('marktoshortlist/{id}','Shortlisting\Shortlisting@marktoshortlist')->name("marktoshortlist");
+Route::get('unshortlist/{id}','Shortlisting\Shortlisting@unshortlist')->name("unshortlist");
+Route::get('notshortlist/{id}','Shortlisting\Shortlisting@notshortlist')->name("notshortlist");
+});
+/*
+*
+* ALL Shortlisted  And Selection of Applicants Routes
+*
+*/
+/*
+*
+*
+*
+*/
+Route::prefix('applicant')->middleware(['auth'])->group(function(){
+Route::get('allshortlisted','Allshortlisted\Allshortlisted@index')->name("allshortlisted");
+Route::get('allshortlistedtable','Allshortlisted\Allshortlisted@allshortlistedtable')->name("allshortlistedtable");
+Route::get('allshortlistedtableview/{id}','Allshortlisted\Allshortlisted@allshortlistedtableview')->name("allshortlistedtableview");
+Route::get('marktoselected/{id}','Allshortlisted\Allshortlisted@marktoselected')->name("marktoselected");
+Route::get('marktounselected/{id}','Allshortlisted\Allshortlisted@marktounselected')->name("marktounselected");
+Route::post('allshortlistedfilter','Allshortlisted\Allshortlisted@allshortlistedfilter')->name("allshortlistedfilter");
+Route::get('unshortlist/{id}','Allshortlisted\Allshortlisted@unshortlist')->name("unshortlist");
+Route::get('notshortlist/{id}','Allshortlisted\Allshortlisted@notshortlist')->name("notshortlist");
+});
+/*
+*
+* Designation  Routes
+*
+*/
+/*
+*/
+Route::prefix('applicant')->middleware(['auth'])->group(function(){
+Route::get('applicantdesignation','ApplicantDesignation\ApplicantDesignation@index')->name("applicantdesignation");
+Route::get('addapplicantdesignationview','ApplicantDesignation\ApplicantDesignation@addapplicantdesignationview')->name("addapplicantdesignationview");
+Route::post('insertapplicantdesignation','ApplicantDesignation\ApplicantDesignation@insertapplicantdesignation')->name("insertapplicantdesignation");
+Route::get('editapplicantdesignation/{id}','ApplicantDesignation\ApplicantDesignation@editapplicantdesignation')->name("editapplicantdesignation");
+Route::post('updateapplicantdesignation','ApplicantDesignation\ApplicantDesignation@updateapplicantdesignation')->name("updateapplicantdesignation");
+});
+/*
+*
+* Contract and All Security Cleared   Routes
+*
+*/
+/*
+*
+*
+*
+*/
+Route::prefix('applicant')->middleware(['auth'])->group(function(){
+Route::get('contracts','ApplicantContract\ApplicantContract@index')->name("contracts");
+Route::post('insertcontract','ApplicantContract\ApplicantContract@insertcontracts')->name("insertcontracts");
+
+Route::post('checkupdatecontract','ApplicantContract\ApplicantContract@checkupdatecontract')->name("checkupdatecontract");
+
+Route::get('getsecuritycleared_ap','ApplicantContract\ApplicantContract@getsecuritycleared_ap')->name("getsecuritycleared_ap");
+
+Route::post('updatecontract','ApplicantContract\ApplicantContract@updatecontract')->name("updatecontract");
+Route::get('viewcontract/{id}','ApplicantContract\ApplicantContract@viewcontract')->name("viewcontract");
+
+Route::get('joining','ApplicantContract\ApplicantContract@joining')->name("joining");
+Route::post('updatecontractjoing','ApplicantContract\ApplicantContract@updatecontractjoing')->name("updatecontractjoing");
+});
 Auth::routes();
 
 

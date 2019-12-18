@@ -14,6 +14,7 @@
     <link href="<?php echo e(asset('assets/css/select2.min.css')); ?>" rel="stylesheet" />
     <link href="<?php echo e(asset('assets/css/bootstrap-toggle.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('assets/css/jquery.toast.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/css/bootstrap-datetimepicker.min.css')); ?>" rel="stylesheet">
      <!-- iCheck -->
     <link href="<?php echo e(asset('assets/vendors/iCheck/skins/flat/green.css')); ?>" rel="stylesheet">
     <?php $__env->stopSection(); ?>

@@ -20,6 +20,8 @@
     <script src="<?php echo e(asset('assets/js/select2.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/bootstrap-toggle.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/moment.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/bootstrap-datetimepicker.min.js')); ?>"></script>
     <!-- iCheck -->
     <script src="<?php echo e(asset('assets/vendors/iCheck/icheck.min.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
