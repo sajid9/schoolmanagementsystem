@@ -11,55 +11,50 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                    <label>Employee Name<span style="color: red" class="required">*</span></label>
-                    <select custom class="form-control" name="employee_id" id="" required="required">
+                    <label>Employee Total Salary Id<span style="color: red" class="required">*</span></label>
+                    <select custom class="form-control" name="empTotalSalary_id" id="" required="required">
                         <option value="">Select One</option>
-                        <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $employee): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($employee->id); ?>"> <?php echo e($employee->emp_name); ?> </option>
+                        <?php $__currentLoopData = $empTotalSalaries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $empTotalSalary): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($empTotalSalary->id); ?>"> <?php echo e($empTotalSalary->employees->emp_name); ?> / <?php echo e($empTotalSalary->employees->employeeGrades->employeeGrade); ?> / <?php echo e($empTotalSalary->months->month_name); ?> / <?php echo e($empTotalSalary->totalAmount); ?> </option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     </div>
 
-                    <div class="form-group">
-                    <label>CNIC<span style="color: red" class="required">*</span></label>
-                    <input name="emp_cnic" class="form-control" placeholder="Enter CNIC Num">
-            
-                    </div>
-                    
+                   
                     <div class="form-group">
                     <label>Charges Head <span style="color: red" class="required">*</span></label>
-                    <select custom class="form-control" name="chargHead_id" required="required">
+                    <select custom class="form-control" name="chargHead_id" id="chargHead" required="required">
                         <option value="">Select One</option>
                         <?php $__currentLoopData = $chargHeads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $chargHead): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($chargHead->id); ?>"><?php echo e($chargHead->salaryChargHead); ?></option>
+                        <option value="<?php echo e($chargHead->id); ?>"><?php echo e($chargHead->salaryChargHead); ?> </option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
-                    </div>
-                    
-                   <div class="form-group">
-                    <label>Month<span style="color: red" class="required">*</span></label>
-                    <select custom class="form-control" name="month_id" required="required">
-                        <option value="">Select One</option>
-                        <?php $__currentLoopData = $months; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $month): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($month->id); ?>"><?php echo e($month->month_name); ?></option>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </select>
-                    </div>
-
-                    <div class="form-group">
-                    <label>Date<span style="color: red" class="required">*</span></label>
-                    <input type="Date" name="salary_date" class="form-control" placeholder="Enter Date" required="required">
                     </div>
 
                     <div class="form-group">
                     <label>Amount<span style="color: red" class="required">*</span></label>
-                    <input name="salaryAmount" class="form-control"  required="required" placeholder="Enter Amount">
+                    <input name="salaryAmount" id="salaryAmount" class="form-control"  required="required" placeholder="Enter Amount">
+                    </div>
+                    
+                   <div class="form-group">
+                    <label>Charges Type<span style="color: red" class="required">*</span></label>
+                    <select custom class="form-control" name="chargType_id" required="required">
+                        <option value="">Select One</option>
+                        <?php $__currentLoopData = $chargTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $chargType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($chargType->id); ?>"><?php echo e($chargType->salaryChargType); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
                     </div>
 
                     <div class="form-group">
-                    <label>Recept Type<span style="color: red" class="required">*</span></label>
-                    <input name="receptType" class="form-control" placeholder="Enter Recept Type">
+                    <label>Transaction Type<span style="color: red" class="required">*</span></label>
+                    <select custom class="form-control" name="transactionType" id="transactionType" placeholder="Enter Recept Type">
+                        <option value="">Select One</option>
+                        <option value="credit" >Credit</option>
+                        <option value="debit" >Debit</option>
+                    </select>
                     </div>
+
                     
                     <button type="submit" class="btn btn-default">Submit Button</button>
                     <button type="reset" class="btn btn-default">Reset Button</button>
@@ -69,6 +64,31 @@
      </div>
 </div>
 
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('footer'); ?>
+##parent-placeholder-d7eb6b340a11a367a1bec55e4a421d949214759f##
+
+<script>
+    $(document).on('change','#chargHead',function(){
+        var std= $(this).val();
+        var token=$('input[name="_token"]').val();
+        var request = $.ajax({
+          url: "<?php echo e(url('salaryHeadAmount')); ?>",
+          type: "POST",
+          data:{amount:std,_token:token},
+          dataType: "json"
+        });
+        request.done(function(msg) {
+            console.log(msg);
+         $('#salaryAmount').val(msg[0].salaryAmount);
+        });
+        request.fail(function(jqXHR, textStatus) {
+         console.log("fail");
+        });
+   
+    });
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('includes.footer2', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php echo $__env->make('includes.sidebar2', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

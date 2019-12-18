@@ -6,12 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class SalaryCharge extends Model
 {
-    protected $fillable = ['chargType_id','chargCategory_id','chargHead_id','employeeGrade_id','salaryAmount'];
+    protected $fillable = ['chargCategory_id','chargHead_id','employeeGrade_id','salaryAmount','transactionType'];
 
-    public function chargTypes()
-    {
-    	return $this->hasOne('App\SalaryChargType','id','chargType_id');
-    }
+   
     public function chargCategories()
     {
     	return $this->hasOne('App\SalaryChargCategory','id','chargCategory_id');

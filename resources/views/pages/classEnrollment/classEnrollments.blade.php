@@ -86,7 +86,7 @@
         var std= $(this).val();
         var token=$('input[name="_token"]').val();
         var request = $.ajax({
-          url: "http://localhost/schoolmanagementsystem/public/fetch",
+          url: "{{url('fetch')}}",
           type: "POST",
            data:{stdid:std,_token:token},
           dataType: "json"

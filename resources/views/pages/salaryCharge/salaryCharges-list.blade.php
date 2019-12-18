@@ -19,22 +19,24 @@
              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Charges Type</th>
+                    
                     <th>Charges Category</th>
                     <th>Charges Head</th>
   	                <th>Employee Grade</th>
                     <th>Amount</th>
+                    <th>Transaction Type</th>
                     <th>Action</th>
                   </tr>
                  </thead>
                   <tbody>
 	                  @foreach($salaryCharges as $salaryCharge)
 						<tr>
-              <td>{{$salaryCharge->chargTypes->salaryChargType}}</td>
+              
               <td>{{$salaryCharge->chargCategories->salaryChargCategory}}</td>
               <td>{{$salaryCharge->chargHeads->salaryChargHead}}</td>
               <td>{{$salaryCharge->employeeGrades->employeeGrade}}</td>
               <td>{{$salaryCharge->salaryAmount}}</td>
+              <td>{{$salaryCharge->transactionType}}</td>
              
 							<td>
                 <a href="{{ url('editSalaryCharges/'.$salaryCharge->id)}}">
