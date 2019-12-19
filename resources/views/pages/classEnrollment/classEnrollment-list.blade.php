@@ -8,7 +8,33 @@
         <div class="row">
           @include('includes.alerts')
           <div class="col-lg-12">
-           <div class="panel panel-default">
+            <form class="form-inline" method="POST" action="{{ url('search-class-students') }}" style="margin-bottom: 20px;">
+              <input type="hidden" name="_token" value="{{csrf_token()}}">
+              <div class="form-group">
+                <label for="class">Classes:</label>
+                <select class="form-control" id="class" name="class">
+                  <option value="">Select Class</option>
+                  @foreach($classes as $class)
+                  <option value="{{$class->id}}">{{$class->c_name}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="section">Sections:</label>
+                <select class="form-control" id="section" name="section">
+                  <option value="">Select Section</option>
+                  @foreach($sections as $section)
+                  <option value="{{$section->id}}">{{$section->sec_name}}</option>
+                  @endforeach
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label><button type="submit" class="btn btn-default">Search</button></label>
+                
+              </div>
+            </form>
+          <div class="panel panel-default">
              <div class="panel-heading">
               Admitted Students
               <a href="{{ url('/cEnrollments')}}" type="button" class="btn btn-primary btn-sm pull-right">Add New</a>      

@@ -21,7 +21,31 @@ class cEnrollmentsController extends Controller
     {
         $cenrolls = CEnrollment::with('admissions.registrations','batches.classes','batches.sections','batches.years')->get();
          // dd($cenrolls);
-    return view('pages.classEnrollment.classEnrollment-list',compact('cenrolls'));
+        $classes  = MClass::all();
+        $sections = Section::all();
+    return view('pages.classEnrollment.classEnrollment-list',compact('cenrolls','classes','sections'));
+    }
+    public function search_class_students(Request $request)
+    {
+
+        $class = $request->class;
+        $section = $request->section;
+        $search = CEnrollment::with('admissions.registrations','batches.classes','batches.sections','batches.years');
+        if ($class != null) {
+            $search->whereHas('batches.classes',function($q) use($class){
+                $q->where('id',$class);
+            });
+        }
+        if ($section != null) {
+            $search->whereHas('batches.sections',function($q) use($section){
+                $q->where('id',$section);
+            });
+        }
+        $cenrolls = $search->get();
+         // dd($cenrolls);
+        $classes  = MClass::all();
+        $sections = Section::all();
+        return view('pages.classEnrollment.classEnrollment-list',compact('cenrolls','classes','sections'));
     }
 
     /**

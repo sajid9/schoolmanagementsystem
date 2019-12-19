@@ -173,4 +173,40 @@ class ResultsController extends Controller
         $terms = ExamTerm::all();
         return view('pages.result.student-result',compact('students','classes','sections','results','terms'));
     }
+    public function result_summary()
+    {
+        $results = array();
+        $classes = MClass::all();
+        $sections = Section::all();
+        $terms = ExamTerm::all();
+        return view('pages.result.result-summary',compact('classes','sections','results','terms'));
+    }
+    public function search_result_summary(Request $request)
+    {
+        $class   = $request->class;
+        $section = $request->section;
+        $term    = $request->term;
+        $search = Result::with('admissions.registrations','examSchedules.batches','grades');
+        if($class != null){
+            $search->whereHas('examSchedules.batches',function($q) use($class){
+                $q->where('class_id',$class);
+            });
+        }
+        if($section != null){
+            $search->whereHas('examSchedules.batches',function($q) use($section){
+                $q->where('section_id',$section);
+            });
+        }
+        if($term != null){
+            $search->whereHas('examSchedules',function($q) use($term){
+                $q->where('examTerm_id',$term);
+            });
+        }
+        $results  = $search->get();
+        $classes  = MClass::all();
+        $sections = Section::all();
+        $terms    = ExamTerm::all();
+       
+        return view('pages.result.result-summary',compact('classes','sections','results','terms'));
+    }
 }

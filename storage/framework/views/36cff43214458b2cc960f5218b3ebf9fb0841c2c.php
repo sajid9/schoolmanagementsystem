@@ -128,6 +128,12 @@
                        <li>
                            <a href="<?php echo e(url('/student-result')); ?>">Students Result</a>
                        </li>
+                       <li>
+                           <a href="<?php echo e(url('/result-summary')); ?>">Result Summary</a>
+                       </li>
+                       <li>
+                           <a href="<?php echo e(url('/examination-attendence')); ?>">Examination Attendence</a>
+                       </li>
                     </ul>
                   </li>
                   <li>
