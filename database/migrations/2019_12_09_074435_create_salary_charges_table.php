@@ -15,11 +15,11 @@ class CreateSalaryChargesTable extends Migration
     {
         Schema::create('salary_charges', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('chargType_id');
             $table->string('chargCategory_id');
             $table->string('chargHead_id');
             $table->string('employeeGrade_id');
             $table->integer('salaryAmount');
+            $table->integer('transactionType');
             $table->timestamps();
         });
     }

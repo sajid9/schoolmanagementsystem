@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\SalaryChargType;
 use App\SalaryChargCategory;
 use App\SalaryChargHead;
 use App\EmployeeGrade;
@@ -19,7 +18,7 @@ class SalaryChargesController extends Controller
     public function index()
     {
 
-          $salaryCharges = SalaryCharge::with('chargTypes','chargCategories','chargHeads','employeeGrades')->get();
+          $salaryCharges = SalaryCharge::with('chargCategories','chargHeads','employeeGrades')->get();
 
           // dd($timeTables);
         return view('pages.salaryCharge.salaryCharges-list',compact('salaryCharges'));
@@ -32,11 +31,11 @@ class SalaryChargesController extends Controller
      */
     public function create()
     {
-        $chargTypes = SalaryChargType::all();
+        
         $chargCategories = SalaryChargCategory::all();
         $chargHeads = SalaryChargHead::all();
         $employeeGrades = EmployeeGrade::all();
-         return view('pages.salaryCharge.salaryCharges',compact('chargTypes','chargHeads','chargCategories','employeeGrades'));
+         return view('pages.salaryCharge.salaryCharges',compact('chargHeads','chargCategories','employeeGrades'));
     }
 
     /**
@@ -49,11 +48,12 @@ class SalaryChargesController extends Controller
     {
         $request->validate([
   
-      'chargType_id' => 'required',
+      
       'chargCategory_id' => 'required',
       'chargHead_id' => 'required',
       'employeeGrade_id' => 'required',
       'salaryAmount' => 'required',
+      'transactionType' => 'required',
     ]);
 
 
@@ -83,12 +83,12 @@ class SalaryChargesController extends Controller
      */
     public function edit($id)
     {
-        $chargTypes = SalaryChargType::all();
+        
         $chargCategories = SalaryChargCategory::all();
         $chargHeads = SalaryChargHead::all();
         $employeeGrades = EmployeeGrade::all();
         $salaryCharges = SalaryCharge::find($id);
-        return view('pages.salaryCharge.editSalaryCharges ',compact('chargTypes','chargCategories','salaryCharges','chargHeads','employeeGrades'));
+        return view('pages.salaryCharge.editSalaryCharges ',compact('chargCategories','salaryCharges','chargHeads','employeeGrades'));
     }
 
     /**
@@ -102,11 +102,12 @@ class SalaryChargesController extends Controller
     {
           $request->validate([
       
-      'chargType_id' => 'required',
+      
       'chargCategory_id' => 'required',
       'chargHead_id' => 'required',
       'employeeGrade_id' => 'required',
       'salaryAmount' => 'required',
+      'transactionType' => 'required',
     ]);
 
 

@@ -281,9 +281,21 @@ Route::get('salaryCharges-list','SalaryChargesController@index');
 Route::get('/editSalaryCharges/{id}','SalaryChargesController@edit');
 Route::post('updateSalaryCharges','SalaryChargesController@update');
 Route::get('delSalaryCharges/{id}','SalaryChargesController@destroy');
+
+
+
  
 		
-		// employeeSalary routes
+		// employeeTotalSalary routes
+
+Route::get('/employeeTotalSalary','EmployeeTotalSalaryController@create');
+Route::post('/addEmployeeTotalSalary','EmployeeTotalSalaryController@store');
+Route::get('employeeTotalSalary-list','EmployeeTotalSalaryController@index');
+Route::get('/editEmployeeTotalSalary/{id}','EmployeeTotalSalaryController@edit');
+Route::post('updateEmployeeTotalSalary','EmployeeTotalSalaryController@update');
+Route::get('delEmployeeTotalSalary/{id}','EmployeeTotalSalaryController@destroy');
+ 		
+ 		// employeeSalary routes
 
 Route::get('/employeeSalary','EmployeeSalaryController@create');
 Route::post('/addEmployeeSalary','EmployeeSalaryController@store');
@@ -291,6 +303,8 @@ Route::get('employeeSalary-list','EmployeeSalaryController@index');
 Route::get('/editEmployeeSalary/{id}','EmployeeSalaryController@edit');
 Route::post('updateEmployeeSalary','EmployeeSalaryController@update');
 Route::get('delEmployeeSalary/{id}','EmployeeSalaryController@destroy');
+
+Route::post('/salaryHeadAmount','EmployeeSalaryController@headAmount');
  
  		// feeChargTypes routes
 
@@ -319,7 +333,16 @@ Route::get('/editFeeChargHead/{id}','FeeChargHeadController@edit');
 Route::post('updateFeeChargHead','FeeChargHeadController@update');
 Route::get('delFeeChargHead/{id}','FeeChargHeadController@destroy');
 		
+		
+		// feeCharges routes
 
+Route::get('/feeCharges','FeeChargesController@create');
+Route::post('/addFeeCharges','FeeChargesController@store');
+Route::get('feeCharges-list','FeeChargesController@index');
+Route::get('/editFeeCharges/{id}','FeeChargesController@edit');
+Route::post('updateFeeCharges','FeeChargesController@update');
+Route::get('delFeeCharges/{id}','FeeChargesController@destroy');
+ 
 
 /*
 ***sajid code start from there***

@@ -14,55 +14,50 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                    <label>Employee Name<span style="color: red" class="required">*</span></label>
-                    <select custom class="form-control" name="employee_id" id="" required="required">
+                    <label>Employee Total Salary Id<span style="color: red" class="required">*</span></label>
+                    <select custom class="form-control" name="empTotalSalary_id" id="" required="required">
                         <option value="">Select One</option>
-                        @foreach($employees as $employee)
-                        <option value="{{$employee->id}}"> {{ $employee->emp_name }} </option>
+                        @foreach($empTotalSalaries as $empTotalSalary)
+                        <option value="{{$empTotalSalary->id}}"> {{ $empTotalSalary->employees->emp_name }} / {{ $empTotalSalary->employees->employeeGrades->employeeGrade }} / {{ $empTotalSalary->months->month_name }} / {{$empTotalSalary->totalAmount}} </option>
                         @endforeach
                     </select>
                     </div>
 
-                    <div class="form-group">
-                    <label>CNIC<span style="color: red" class="required">*</span></label>
-                    <input name="emp_cnic" class="form-control" placeholder="Enter CNIC Num">
-            
-                    </div>
-                    
+                   
                     <div class="form-group">
                     <label>Charges Head <span style="color: red" class="required">*</span></label>
-                    <select custom class="form-control" name="chargHead_id" required="required">
+                    <select custom class="form-control" name="chargHead_id" id="chargHead" required="required">
                         <option value="">Select One</option>
                         @foreach($chargHeads as $chargHead)
-                        <option value="{{$chargHead->id}}">{{$chargHead->salaryChargHead}}</option>
+                        <option value="{{$chargHead->id}}">{{$chargHead->salaryChargHead}} </option>
                         @endforeach
                     </select>
-                    </div>
-                    
-                   <div class="form-group">
-                    <label>Month<span style="color: red" class="required">*</span></label>
-                    <select custom class="form-control" name="month_id" required="required">
-                        <option value="">Select One</option>
-                        @foreach($months as $month)
-                        <option value="{{$month->id}}">{{$month->month_name}}</option>
-                        @endforeach
-                    </select>
-                    </div>
-
-                    <div class="form-group">
-                    <label>Date<span style="color: red" class="required">*</span></label>
-                    <input type="Date" name="salary_date" class="form-control" placeholder="Enter Date" required="required">
                     </div>
 
                     <div class="form-group">
                     <label>Amount<span style="color: red" class="required">*</span></label>
-                    <input name="salaryAmount" class="form-control"  required="required" placeholder="Enter Amount">
+                    <input name="salaryAmount" id="salaryAmount" class="form-control"  required="required" placeholder="Enter Amount">
+                    </div>
+                    
+                   <div class="form-group">
+                    <label>Charges Type<span style="color: red" class="required">*</span></label>
+                    <select custom class="form-control" name="chargType_id" required="required">
+                        <option value="">Select One</option>
+                        @foreach($chargTypes as $chargType)
+                        <option value="{{$chargType->id}}">{{$chargType->salaryChargType}}</option>
+                        @endforeach
+                    </select>
                     </div>
 
                     <div class="form-group">
-                    <label>Recept Type<span style="color: red" class="required">*</span></label>
-                    <input name="receptType" class="form-control" placeholder="Enter Recept Type">
+                    <label>Transaction Type<span style="color: red" class="required">*</span></label>
+                    <select custom class="form-control" name="transactionType" id="transactionType" placeholder="Enter Recept Type">
+                        <option value="">Select One</option>
+                        <option value="credit" >Credit</option>
+                        <option value="debit" >Debit</option>
+                    </select>
                     </div>
+
                     
                     <button type="submit" class="btn btn-default">Submit Button</button>
                     <button type="reset" class="btn btn-default">Reset Button</button>
@@ -72,4 +67,29 @@
      </div>
 </div>
 
+@endsection
+
+@section('footer')
+@parent
+
+<script>
+    $(document).on('change','#chargHead',function(){
+        var std= $(this).val();
+        var token=$('input[name="_token"]').val();
+        var request = $.ajax({
+          url: "{{url('salaryHeadAmount')}}",
+          type: "POST",
+          data:{amount:std,_token:token},
+          dataType: "json"
+        });
+        request.done(function(msg) {
+            console.log(msg);
+         $('#salaryAmount').val(msg[0].salaryAmount);
+        });
+        request.fail(function(jqXHR, textStatus) {
+         console.log("fail");
+        });
+   
+    });
+</script>
 @endsection

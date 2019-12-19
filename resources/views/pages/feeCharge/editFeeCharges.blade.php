@@ -21,7 +21,7 @@
                     <select custom class="form-control" name="chargType_id" id="" required="required">
                         <option value="">Select One</option>
                         @foreach($chargTypes as $chargType)
-                        <option {{ ($feeCharges->chargType_id == $chargType->id) ? 'selected' : '' }} value="{{$chargType->id}}"> {{ $chargType->salaryChargType }} </option>
+                        <option {{ ($feeCharges->chargType_id == $chargType->id) ? 'selected' : '' }} value="{{$chargType->id}}"> {{ $chargType->feeChargType }} </option>
                         @endforeach
                     </select>
                     </div>
@@ -31,7 +31,7 @@
                     <select custom class="form-control" name="chargCategory_id" required="required">
                         <option value="">Select One</option>
                         @foreach($chargCategories as $chargCategory)
-                        <option {{ ($feeCharges->chargCategory_id == $chargCategory->id) ? 'selected' : '' }} value="{{$chargCategory->id}}">{{$chargCategory->salaryChargCategory}}</option>
+                        <option {{ ($feeCharges->chargCategory_id == $chargCategory->id) ? 'selected' : '' }} value="{{$chargCategory->id}}">{{$chargCategory->feeChargCategory}}</option>
                         @endforeach
                     </select>
                     </div>
@@ -41,7 +41,7 @@
                     <select custom class="form-control" name="chargHead_id" required="required">
                         <option value="">Select One</option>
                         @foreach($chargHeads as $chargHead)
-                        <option {{ ($feeCharges->chargHead_id == $chargHead->id) ? 'selected' : '' }} value="{{$chargHead->id}}">{{$chargHead->salaryChargHead}}</option>
+                        <option {{ ($feeCharges->chargHead_id == $chargHead->id) ? 'selected' : '' }} value="{{$chargHead->id}}">{{$chargHead->feeChargHead}}</option>
                         @endforeach
                     </select>
                     </div>

@@ -63,6 +63,9 @@
                         <a href="{{ url('/sections-list')}}">Section</a>
                       </li>
                       <li>
+                        <a href="{{ url('/years-list')}}">Year</a>
+                      </li>
+                      <li>
                         <a href="{{ url('/batches-list') }}">Batch</a>
                       </li>
                     </ul>
@@ -78,6 +81,9 @@
                   <li>
                     <a><i class="fa fa-graduation-cap"></i>Time Table<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      <li>
+                        <a href="{{ url('/months-list')}}">Month</a>
+                      </li>
                       <li>
                         <a href="{{ url('/days-list')}}">Period Day</a>
                       </li>
@@ -152,7 +158,10 @@
                           <a href="{{ url('/salaryCharges-list')}}">Charges</a>
                        </li>
                        <li>
-                          <a href="{{ url('/employeeSalary-list')}}">Salary</a>
+                          <a href="{{ url('/employeeSalary')}}">Salary</a>
+                       </li>
+                       <li>
+                          <a href="{{ url('/employeeTotalSalary-list')}}">Employee Total Salary</a>
                        </li>
                     </ul>
                   </li>
@@ -195,9 +204,7 @@
                        <li>
                            <a href="{{ url('/feeChargHead-list')}}">Fee Charges Head</a>
                        </li>
-                       <li>
-                           <a href="#">1</a>
-                       </li>
+                       
                        <li>
                            <a href="{{ url('/feeCharges-list')}}">Fee Charges</a>
                        </li>

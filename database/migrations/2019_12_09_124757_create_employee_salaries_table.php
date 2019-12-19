@@ -15,13 +15,11 @@ class CreateEmployeeSalariesTable extends Migration
     {
         Schema::create('employee_salaries', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('employee_id');
-            $table->string('emp_cnic');
-            $table->string('chargHead_id');
-            $table->string('month_id');
-            $table->string('salary_date');
-            $table->integer('salaryAmount');
-            $table->string('receptType');
+            $table->string('empTotalSalary_id');
+            $table->string('salaryCharge_id');
+            $table->string('chargType_id');
+            $table->string('salaryAmount');
+            $table->enum('transactionType',['credit','debit']);
             $table->timestamps();
         });
     }

@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class EmployeeSalary extends Model
 {
-   protected $fillable = ['employee_id','emp_cnic','chargHead_id','month_id','salary_date','salaryAmount','receptType'];
+   protected $fillable = ['empTotalSalary_id','chargHead_id','chargType_id','salaryAmount','transactionType'];
 
-    public function employees()
+    public function empTotalSalaries()
     {
-    	return $this->hasOne('App\Employe','id','employee_id');
+    	return $this->hasOne('App\EmployeeTotalSalary','id','empTotalSalary_id');
     }
 
     public function chargHeads()
@@ -18,8 +18,8 @@ class EmployeeSalary extends Model
     	return $this->hasOne('App\SalaryChargHead','id','chargHead_id');
     }
 
-    public function months()
+    public function chargTypes()
     {
-    	return $this->hasOne('App\Month','id','month_id');
+    	return $this->hasOne('App\SalaryChargType','id','chargType_id');
     }
 }

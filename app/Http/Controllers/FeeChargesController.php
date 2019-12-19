@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\FeeChargType;
+use App\FeeChargCategory;
+use App\FeeChargHead;
+use App\MClass;
+use App\FeeCharge;
 
 class FeeChargesController extends Controller
 {
@@ -13,7 +18,11 @@ class FeeChargesController extends Controller
      */
     public function index()
     {
-        //
+
+          $feeCharges = FeeCharge::with('chargTypes','chargCategories','chargHeads','classes')->get();
+
+          //dd($feeCharges);
+        return view('pages.feeCharge.feeCharges-list',compact('feeCharges'));
     }
 
     /**
@@ -23,7 +32,11 @@ class FeeChargesController extends Controller
      */
     public function create()
     {
-        //
+        $chargTypes = FeeChargType::all();
+        $chargCategories = FeeChargCategory::all();
+        $chargHeads = FeeChargHead::all();
+        $classes = MClass::all();
+         return view('pages.feeCharge.feeCharges',compact('chargTypes','chargHeads','chargCategories','classes'));
     }
 
     /**
@@ -34,7 +47,21 @@ class FeeChargesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+  
+      'chargType_id' => 'required',
+      'chargCategory_id' => 'required',
+      'chargHead_id' => 'required',
+      'class_id' => 'required',
+      'feeAmount' => 'required',
+    ]);
+
+
+        $values = array_except($request->all(),['_token']);
+
+        $feeCharges = FeeCharge::create($values);
+        // return back();
+       return redirect()->to('feeCharges-list')->with(compact('feeCharges'))->with('message', 'FeeCharge added successfully');
     }
 
     /**
@@ -56,7 +83,12 @@ class FeeChargesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $chargTypes = FeeChargType::all();
+        $chargCategories = FeeChargCategory::all();
+        $chargHeads = FeeChargHead::all();
+        $classes = MClass::all();
+        $feeCharges = FeeCharge::find($id);
+        return view('pages.feeCharge.editFeeCharges ',compact('chargTypes','chargCategories','feeCharges','chargHeads','classes'));
     }
 
     /**
@@ -66,9 +98,23 @@ class FeeChargesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+          $request->validate([
+      
+      'chargType_id' => 'required',
+      'chargCategory_id' => 'required',
+      'chargHead_id' => 'required',
+      'class_id' => 'required',
+      'feeAmount' => 'required',
+    ]);
+
+
+        $values = array_except($request->all(),['_token']);
+
+        $feeCharges = FeeCharge::where('id',$request->id)->update($values);
+        // return back();
+       return redirect()->to('feeCharges-list')->with('message', 'FeeCharge updated successfully');
     }
 
     /**
@@ -77,8 +123,11 @@ class FeeChargesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+         $feeCharges = FeeCharge::find($request->id);
+        if($feeCharges->delete()) {
+            return redirect()->to('feeCharges-list')->with('message','FeeCharge deleted successfully');
+        }
     }
 }

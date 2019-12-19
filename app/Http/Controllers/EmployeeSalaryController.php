@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Employe;
-use App\Month;
+use App\EmployeeTotalSalary;
 use App\SalaryChargHead;
+use App\SalaryChargType;
+use App\SalaryCharge;
 use App\EmployeeSalary;
 
 class EmployeeSalaryController extends Controller
@@ -31,11 +32,13 @@ class EmployeeSalaryController extends Controller
      */
     public function create()
     {
-        $employees = Employe::all();
-        $months = Month::all();
+        $empTotalSalaries = EmployeeTotalSalary::with('employees.employeeGrades')->get();
         $chargHeads = SalaryChargHead::all();
+        $chargTypes = SalaryChargType::all();
 
-        return view('pages.employeeSalary.employeeSalary',compact('employees','chargHeads','months'));
+        // dd($chargHeads);
+
+        return view('pages.employeeSalary.employeeSalary',compact('empTotalSalaries','chargHeads','chargTypes'));
     }
 
     /**
@@ -131,5 +134,11 @@ class EmployeeSalaryController extends Controller
         if($employeeSalaries->delete()) {
             return redirect()->to('employeeSalary-list')->with('message','EmployeeSalary deleted successfully');
         }
+    }
+
+     public  function headAmount(Request $request){
+        $headAmounts = SalaryCharge::where('chargHead_id',$request->amount)->get();
+        return json_encode($headAmounts);
+
     }
 }
