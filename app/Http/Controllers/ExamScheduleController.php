@@ -10,6 +10,7 @@ use App\ExamTerm;
 use App\ExamSchedule;
 use App\CEnrollment;
 use App\examination_attendence;
+use App\Admission;
 
 class ExamScheduleController extends Controller
 {
@@ -157,5 +158,32 @@ class ExamScheduleController extends Controller
             
         }
         return json_encode(['message'=>'success']);
+    }
+    public function examination_attendence()
+    {
+        $students   = Admission::with('registrations')->get();
+        $terms      = ExamTerm::all();
+        $attendance = array();
+        return view('pages.examSchedule.attendancereport',compact('students','terms','attendance'));
+    }
+    public function search_exam_attendance(Request $request)
+    {
+        $students = Admission::with('registrations')->get();
+        $terms    = ExamTerm::all();
+        $exam     = examination_attendence::with('examschedule.examSlots.examTimes','examschedule.examSlots.days','examschedule.examSlots.classRooms','examschedule.terms','admission.registrations');
+        if($request->student != ''){
+            $student = $request->student;
+            $exam->whereHas('admission',function($q) use($student){
+                $q->where('id',$student);
+            });
+        }
+        if($request->term != ''){
+            $term = $request->term;
+            $exam->whereHas('examschedule.terms',function($q) use($term){
+                $q->where('id',$term);
+            });
+        }
+        $attendance = $exam->get();
+        return view('pages.examSchedule.attendancereport',compact('students','terms','attendance'));
     }
 }

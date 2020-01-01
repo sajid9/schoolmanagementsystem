@@ -111,6 +111,7 @@ Route::post('/addCEnrollments','cEnrollmentsController@store');
 Route::get('editcEnrollment/{id}','cEnrollmentsController@edit');
 Route::post('updatecEnrollment','cEnrollmentsController@update');
 Route::get('delcEnrollment/{id}','cEnrollmentsController@destroy');
+Route::post('search-class-students','cEnrollmentsController@search_class_students');
 //addCEnrollments
 
 		// subjects routes
@@ -212,7 +213,9 @@ Route::post('updateExamSchedule','ExamScheduleController@update');
 Route::get('delExamSchedule/{id}','ExamScheduleController@destroy');
 Route::get('examattendence/{scheduleId}/{batchId}','ExamScheduleController@axam_attendence_list');
 Route::post('markexamAttendence','ExamScheduleController@mark_exam_attendence');
-		
+Route::get('examination-attendence','ExamScheduleController@examination_attendence');
+		//exam attendance
+Route::post('searchexamattendance','ExamScheduleController@search_exam_attendance');
 		// grades routes
 
 Route::get('/grades','GradesController@create');
@@ -376,6 +379,8 @@ Route::post('attendancesearch','Reports\AttendanceController@attendance_search')
 Route::post('markAttendence','AttendenceController@markattendence');	
 Route::get('student-result','ResultsController@student_result');	
 Route::post('result-search','ResultsController@result_search');	
+Route::get('result-summary','ResultsController@result_summary');	
+Route::post('search-result-summary','ResultsController@search_result_summary');	
 /*
 *
 *Payments

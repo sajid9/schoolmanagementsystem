@@ -134,6 +134,12 @@
                        <li>
                            <a href="{{ url('/student-result') }}">Students Result</a>
                        </li>
+                       <li>
+                           <a href="{{ url('/result-summary') }}">Result Summary</a>
+                       </li>
+                       <li>
+                           <a href="{{ url('/examination-attendence') }}">Examination Attendence</a>
+                       </li>
                     </ul>
                   </li>
                   <li>
