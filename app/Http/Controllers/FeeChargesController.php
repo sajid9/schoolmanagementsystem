@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\FeeChargType;
 use App\FeeChargCategory;
 use App\FeeChargHead;
 use App\MClass;
@@ -19,7 +18,7 @@ class FeeChargesController extends Controller
     public function index()
     {
 
-          $feeCharges = FeeCharge::with('chargTypes','chargCategories','chargHeads','classes')->get();
+          $feeCharges = FeeCharge::with('chargCategories','chargHeads','classes')->get();
 
           //dd($feeCharges);
         return view('pages.feeCharge.feeCharges-list',compact('feeCharges'));
@@ -32,11 +31,11 @@ class FeeChargesController extends Controller
      */
     public function create()
     {
-        $chargTypes = FeeChargType::all();
+        
         $chargCategories = FeeChargCategory::all();
         $chargHeads = FeeChargHead::all();
         $classes = MClass::all();
-         return view('pages.feeCharge.feeCharges',compact('chargTypes','chargHeads','chargCategories','classes'));
+         return view('pages.feeCharge.feeCharges',compact('chargHeads','chargCategories','classes'));
     }
 
     /**
@@ -49,11 +48,12 @@ class FeeChargesController extends Controller
     {
         $request->validate([
   
-      'chargType_id' => 'required',
+      
       'chargCategory_id' => 'required',
       'chargHead_id' => 'required',
       'class_id' => 'required',
       'feeAmount' => 'required',
+      'transactionType' => 'required',
     ]);
 
 
@@ -83,12 +83,12 @@ class FeeChargesController extends Controller
      */
     public function edit($id)
     {
-        $chargTypes = FeeChargType::all();
+        
         $chargCategories = FeeChargCategory::all();
         $chargHeads = FeeChargHead::all();
         $classes = MClass::all();
         $feeCharges = FeeCharge::find($id);
-        return view('pages.feeCharge.editFeeCharges ',compact('chargTypes','chargCategories','feeCharges','chargHeads','classes'));
+        return view('pages.feeCharge.editFeeCharges ',compact('chargCategories','feeCharges','chargHeads','classes'));
     }
 
     /**
@@ -102,11 +102,12 @@ class FeeChargesController extends Controller
     {
           $request->validate([
       
-      'chargType_id' => 'required',
+      
       'chargCategory_id' => 'required',
       'chargHead_id' => 'required',
       'class_id' => 'required',
       'feeAmount' => 'required',
+      'transactionType' => 'required',
     ]);
 
 

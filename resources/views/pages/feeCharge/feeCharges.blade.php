@@ -13,15 +13,7 @@
              {{ csrf_field() }}
 
                 <div class="col-md-4">
-                    <div class="form-group">
-                    <label>Charges Type <span style="color: red" class="required">*</span></label>
-                    <select custom class="form-control" name="chargType_id" id="" required="required">
-                        <option value="">Select One</option>
-                        @foreach($chargTypes as $chargType)
-                        <option value="{{$chargType->id}}"> {{ $chargType->feeChargType }} </option>
-                        @endforeach
-                    </select>
-                    </div>
+                    
 
                     <div class="form-group">
                     <label>Charges Category <span style="color: red" class="required">*</span></label>
@@ -56,6 +48,15 @@
                     <div class="form-group">
                     <label>Amount<span style="color: red" class="required">*</span></label>
                     <input name="feeAmount" class="form-control"  required="required" placeholder="Enter Amount">
+                    </div>
+
+                    <div class="form-group">
+                    <label>Transaction Type<span style="color: red" class="required">*</span></label>
+                    <select custom class="form-control" name="transactionType" id="transactionType" placeholder="Enter Recept Type">
+                        <option value="">Select One</option>
+                        <option value="credit" >Credit</option>
+                        <option value="debit" >Debit</option>
+                    </select>
                     </div>
                     
                     <button type="submit" class="btn btn-default">Submit Button</button>

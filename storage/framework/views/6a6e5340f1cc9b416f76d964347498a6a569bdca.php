@@ -10,20 +10,12 @@
                 <div class="col-md-4"> 
 
                     
-                    <div class="form-group">
-                    <label>Charges Type <span style="color: red" class="required">*</span></label>
-                    <input type="hidden" name="id" value="<?php echo e($feeCharges->id); ?>">
-                    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
-                    <select custom class="form-control" name="chargType_id" id="" required="required">
-                        <option value="">Select One</option>
-                        <?php $__currentLoopData = $chargTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $chargType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option <?php echo e(($feeCharges->chargType_id == $chargType->id) ? 'selected' : ''); ?> value="<?php echo e($chargType->id); ?>"> <?php echo e($chargType->feeChargType); ?> </option>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </select>
-                    </div>
+                    
 
                     <div class="form-group">
                     <label>Charges Category <span style="color: red" class="required">*</span></label>
+                    <input type="hidden" name="id" value="<?php echo e($feeCharges->id); ?>">
+                    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                     <select custom class="form-control" name="chargCategory_id" required="required">
                         <option value="">Select One</option>
                         <?php $__currentLoopData = $chargCategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $chargCategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -55,6 +47,15 @@
                     <div class="form-group">
                     <label>Amount<span style="color: red" class="required">*</span></label>
                     <input name="feeAmount" class="form-control" value="<?php echo e($feeCharges->feeAmount); ?>" required="required" placeholder="Enter Amount">
+                    </div>
+
+                    <div class="form-group">
+                    <label>Transaction Type<span style="color: red" class="required">*</span></label>
+                    <select custom class="form-control" name="transactionType" id="transactionType" placeholder="Enter Recept Type">
+                        <option value="">Select One</option>
+                        <option <?php echo e(($feeCharges->transactionType == 'credit') ? 'selected': ''); ?> value="credit" >Credit</option>
+                        <option <?php echo e(($feeCharges->transactionType == 'debit') ? 'selected': ''); ?> value="debit" >Debit</option>
+                    </select>
                     </div>
 
                     <button type="submit" class="btn btn-default">Update Button</button>

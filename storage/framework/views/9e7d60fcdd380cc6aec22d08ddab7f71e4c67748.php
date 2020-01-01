@@ -10,13 +10,13 @@
 
 
                 <div class="col-md-4"> 
-                    <div class="form-group">
+                    <div class="form-group" id="classNamesetval">
                     <label>Name<span style="color: red" class="required">*</span></label>
-                    <input name="batchName" class="form-control" required="required" placeholder="Enter Batch Name">
+                    <input name="batchName" class="form-control" required="required" placeholder="Enter Batch Name" id="batchName" readonly>
                     </div>
                     <div class="form-group">
                     <label>Class<span style="color: red" class="required">*</span></label>
-                    <select custom class="form-control" name="class_id" required="required">
+                    <select custom class="form-control" name="class_id" id="class_id"required="required">
                         <option value="">Select One</option>
                         <?php $__currentLoopData = $classes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $class): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($class->id); ?>"><?php echo e($class->c_name); ?></option>
@@ -26,7 +26,7 @@
 
                     <div class="form-group">
                     <label>Section<span style="color: red" class="required">*</span></label>
-                    <select custom class="form-control" name="section_id" required="required">
+                    <select custom class="form-control" id="section_id" name="section_id" required="required">
                         <option value="">Select One</option>
                         <?php $__currentLoopData = $sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($section->id); ?>"><?php echo e($section->sec_name); ?></option>
@@ -36,7 +36,7 @@
 
                     <div class="form-group">
                     <label>Year<span style="color: red" class="required">*</span></label>
-                    <select custom class="form-control" name="year_id" required="required">
+                    <select custom class="form-control" name="year_id"id="year_id"  required="required">
                         <option value="">Select One</option>
                         <?php $__currentLoopData = $years; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $year): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($year->id); ?>"><?php echo e($year->yearName); ?></option>
@@ -61,13 +61,46 @@
         </div>
      </div>
 </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('footer'); ?>
+##parent-placeholder-d7eb6b340a11a367a1bec55e4a421d949214759f##
+
 <script>
-    $(document).ready(function(){
-      $('#status').bootstrapToogle({
-        on: 'active',
-        off: 'inactive'
-      });  
-    });
+   $(document).ready(function(){
+    var className='';
+    var year='';
+    var section='';
+  $("#class_id").change(function(){
+   className=$( "#class_id option:selected" ).text();
+
+  temp1="<label>Name<span style='color: red' class='required'>*</span></label><input name='batchName' class='form-control' value='"+className+section+year+"' required='required' placeholder='Enter Batch Name' id='batchName' readonly>";
+
+  
+  $('#classNamesetval').html(temp1);
+
+
+});
+
+  $("#section_id").change(function(){
+   section=$( "#section_id option:selected" ).text();
+
+  temp2=" <label>Name<span style='color: red' class='required'>*</span></label><input name='batchName' class='form-control' value='"+className+section+year+"' required='required' placeholder='Enter Batch Name' id='batchName' readonly>";
+  $('#classNamesetval').html(temp2);
+});
+
+ $("#year_id").change(function(){
+  year= $( "#year_id option:selected" ).text();
+
+  temp3=" <label>Name<span style='color: red' class='required'>*</span></label><input name='batchName' class='form-control' value='"+className+section+year+"' required='required' placeholder='Enter Batch Name' id='batchName' readonly>";
+$('#classNamesetval').html(temp3);
+});
+});
+    
+ 
+
+
 </script>
 
 <?php $__env->stopSection(); ?>

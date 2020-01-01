@@ -48,7 +48,11 @@
 
                     <div class="form-group">
                     <label>Transaction Type<span style="color: red" class="required">*</span></label>
-                    <input name="transactionType" class="form-control" placeholder="Enter Transaction Type">
+                    <select custom class="form-control" name="transactionType" id="transactionType" placeholder="Enter Recept Type">
+                        <option value="">Select One</option>
+                        <option value="credit" >Credit</option>
+                        <option value="debit" >Debit</option>
+                    </select>
                     </div>
                     
                     <button type="submit" class="btn btn-default">Submit Button</button>

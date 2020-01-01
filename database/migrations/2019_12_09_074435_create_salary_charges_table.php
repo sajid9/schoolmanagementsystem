@@ -19,7 +19,7 @@ class CreateSalaryChargesTable extends Migration
             $table->string('chargHead_id');
             $table->string('employeeGrade_id');
             $table->integer('salaryAmount');
-            $table->integer('transactionType');
+            $table->enum('transactionType',['credit','debit']);
             $table->timestamps();
         });
     }

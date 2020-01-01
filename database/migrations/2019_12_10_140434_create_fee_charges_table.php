@@ -15,11 +15,11 @@ class CreateFeeChargesTable extends Migration
     {
         Schema::create('fee_charges', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('chargType_id');
             $table->string('chargCategory_id');
             $table->string('chargHead_id');
             $table->string('class_id');
             $table->integer('feeAmount');
+            $table->enum('transactionType',['credit','debit']);
             $table->timestamps();
         });
     }

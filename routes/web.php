@@ -356,6 +356,28 @@ Route::get('/editFeeCharges/{id}','FeeChargesController@edit');
 Route::post('updateFeeCharges','FeeChargesController@update');
 Route::get('delFeeCharges/{id}','FeeChargesController@destroy');
  
+		
+		// studentTotalFee routes
+
+Route::get('/studentTotalFee','StudentTotalFeeController@create');
+Route::post('/addStudentTotalFee','StudentTotalFeeController@store');
+Route::get('studentTotalFee-list','StudentTotalFeeController@index');
+Route::get('/editStudentTotalFee/{id}','StudentTotalFeeController@edit');
+Route::post('updateStudentTotalFee','StudentTotalFeeController@update');
+Route::get('delStudentTotalFee/{id}','StudentTotalFeeController@destroy');
+
+ 		// studentFee routes
+
+Route::get('/studentFee','StudentFeeController@create');
+Route::post('/addStudentFee','StudentFeeController@store');
+Route::get('studentFee-list','StudentFeeController@index');
+Route::get('/editStudentFee/{id}','StudentFeeController@edit');
+Route::post('updateStudentFee','StudentFeeController@update');
+Route::get('delStudentFee/{id}','StudentFeeController@destroy');
+
+Route::post('/feeHeadAmount','StudentFeeController@headAmount');
+
+ 
 
 /*
 ***sajid code start from there***

@@ -15,22 +15,24 @@
              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Charges Type</th>
+                    
                     <th>Charges Category</th>
                     <th>Charges Head</th>
   	                <th>Student Class</th>
                     <th>Amount</th>
+                    <th>Transaction Type</th>
                     <th>Action</th>
                   </tr>
                  </thead>
                   <tbody>
 	                  <?php $__currentLoopData = $feeCharges; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $feeCharge): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						<tr>
-              <td><?php echo e($feeCharge->chargTypes->feeChargType); ?></td>
+              
               <td><?php echo e($feeCharge->chargCategories->feeChargCategory); ?></td>
               <td><?php echo e($feeCharge->chargHeads->feeChargHead); ?></td>
               <td><?php echo e($feeCharge->classes->c_name); ?></td>
               <td><?php echo e($feeCharge->feeAmount); ?></td>
+              <td><?php echo e($feeCharge->transactionType); ?></td>
              
 							<td>
                 <a href="<?php echo e(url('editFeeCharges/'.$feeCharge->id)); ?>">

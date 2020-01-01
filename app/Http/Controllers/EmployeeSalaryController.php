@@ -36,7 +36,7 @@ class EmployeeSalaryController extends Controller
         $chargHeads = SalaryChargHead::all();
         $chargTypes = SalaryChargType::all();
 
-        // dd($chargHeads);
+         // dd($empTotalSalaries);
 
         return view('pages.employeeSalary.employeeSalary',compact('empTotalSalaries','chargHeads','chargTypes'));
     }
@@ -51,21 +51,39 @@ class EmployeeSalaryController extends Controller
     {
         $request->validate([
   
-      'employee_id' => 'required',
-      'emp_cnic' => 'required',
+      'empTotalSalary_id' => 'required',
       'chargHead_id' => 'required',
-      'month_id' => 'required',
-      'salary_date' => 'required',
+      'chargType_id' => 'required',
       'salaryAmount' => 'required',
-      'receptType' => 'required',
-    ]);
+      'transactionType' => 'required',
+    ]); 
+       
+    EmployeeSalary::create(['empTotalSalary_id'=>$request->empTotalSalary_id,'chargHead_id'=>$request->chargHead_id,'chargType_id'=>$request->chargType_id,'salaryAmount'=>$request->salaryAmount,'transactionType'=>$request->transactionType]);
+   if ($request->transactionType=='credit') {
 
+ $check=EmployeeTotalSalary::where('employee_id',$request->empTotalSalary_id)->where('month_id',$request->month_id)->first();
+   
+ if (isset($check->totalAmount)) {
+   $totalamount=$check->totalAmount+$request->salaryAmount;
+    
+     EmployeeTotalSalary::where('employee_id',$request->empTotalSalary_id)->where('month_id',$request->month_id)->update(['totalAmount'=>$totalamount]);
+ }
+    
 
-        $values = array_except($request->all(),['_token']);
+    }else{ 
 
-        $employeeSalaries = EmployeeSalary::create($values);
-        // return back();
-       return redirect()->to('employeeSalary-list')->with(compact('employeeSalaries'))->with('message', 'EmployeeSalary added successfully');
+ $check=EmployeeTotalSalary::where('employee_id',$request->empTotalSalary_id)->where('month_id',$request->month_id)->first();
+
+     if (isset($check->totalAmount)) {
+   $totalamount=$check->totalAmount-$request->salaryAmount;
+    
+     EmployeeTotalSalary::where('employee_id',$request->empTotalSalary_id)->where('month_id',$request->month_id)->update(['totalAmount'=>$totalamount]);
+ }
+    }
+
+   return redirect()->to('employeeTotalSalary-list')->with('message', 'EmployeeSalary updated successfully');
+  
+      
     }
 
     /**
@@ -105,13 +123,11 @@ class EmployeeSalaryController extends Controller
     {
           $request->validate([
       
-       'employee_id' => 'required',
-      'emp_cnic' => 'required',
+      'empTotalSalary_id' => 'required',
       'chargHead_id' => 'required',
-      'month_id' => 'required',
-      'salary_date' => 'required',
+      'chargType_id' => 'required',
       'salaryAmount' => 'required',
-      'receptType' => 'required',
+      'transactionType' => 'required',
     ]);
 
 
@@ -137,7 +153,7 @@ class EmployeeSalaryController extends Controller
     }
 
      public  function headAmount(Request $request){
-        $headAmounts = SalaryCharge::where('chargHead_id',$request->amount)->get();
+        $headAmounts = SalaryCharge::where('chargHead_id',$request->chargHead)->where('employeeGrade_id',$request->empTotalSalary_id)->get();
         return json_encode($headAmounts);
 
     }

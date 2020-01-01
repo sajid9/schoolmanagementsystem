@@ -16,7 +16,7 @@ class CreateEmployeeSalariesTable extends Migration
         Schema::create('employee_salaries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('empTotalSalary_id');
-            $table->string('salaryCharge_id');
+            $table->string('chargHead_id');
             $table->string('chargType_id');
             $table->string('salaryAmount');
             $table->enum('transactionType',['credit','debit']);
