@@ -14,20 +14,12 @@
                 <div class="col-md-4"> 
 
                     
-                    <div class="form-group">
-                    <label>Charges Type <span style="color: red" class="required">*</span></label>
-                    <input type="hidden" name="id" value="{{$feeCharges->id}}">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                    <select custom class="form-control" name="chargType_id" id="" required="required">
-                        <option value="">Select One</option>
-                        @foreach($chargTypes as $chargType)
-                        <option {{ ($feeCharges->chargType_id == $chargType->id) ? 'selected' : '' }} value="{{$chargType->id}}"> {{ $chargType->feeChargType }} </option>
-                        @endforeach
-                    </select>
-                    </div>
+                    
 
                     <div class="form-group">
                     <label>Charges Category <span style="color: red" class="required">*</span></label>
+                    <input type="hidden" name="id" value="{{$feeCharges->id}}">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <select custom class="form-control" name="chargCategory_id" required="required">
                         <option value="">Select One</option>
                         @foreach($chargCategories as $chargCategory)
@@ -59,6 +51,15 @@
                     <div class="form-group">
                     <label>Amount<span style="color: red" class="required">*</span></label>
                     <input name="feeAmount" class="form-control" value="{{$feeCharges->feeAmount }}" required="required" placeholder="Enter Amount">
+                    </div>
+
+                    <div class="form-group">
+                    <label>Transaction Type<span style="color: red" class="required">*</span></label>
+                    <select custom class="form-control" name="transactionType" id="transactionType" placeholder="Enter Recept Type">
+                        <option value="">Select One</option>
+                        <option {{($feeCharges->transactionType == 'credit') ? 'selected': ''}} value="credit" >Credit</option>
+                        <option {{($feeCharges->transactionType == 'debit') ? 'selected': ''}} value="debit" >Debit</option>
+                    </select>
                     </div>
 
                     <button type="submit" class="btn btn-default">Update Button</button>

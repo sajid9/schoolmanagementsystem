@@ -203,10 +203,10 @@
                            <a href="{{ url('/feeCharges-list')}}">Fee Charges</a>
                        </li>
                        <li>
-                         <a href="#">2</a>
+                         <a href="{{ url('/studentTotalFee-list')}}">Student Total Fee</a>
                        </li>
                        <li>
-                           <a href="{{ url('/studentFee-list')}}">Student Fee</a>
+                           <a href="{{ url('/studentFee')}}">Student Fee</a>
                        </li>
                        
                        

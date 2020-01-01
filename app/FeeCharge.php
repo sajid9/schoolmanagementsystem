@@ -6,12 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class FeeCharge extends Model
 {
-    protected $fillable = ['chargType_id','chargCategory_id','chargHead_id','class_id','feeAmount'];
+    protected $fillable = ['chargCategory_id','chargHead_id','class_id','feeAmount','transactionType'];
 
-    public function chargTypes()
-    {
-    	return $this->hasOne('App\FeeChargType','id','chargType_id');
-    }
+    
     public function chargCategories()
     {
     	return $this->hasOne('App\FeeChargCategory','id','chargCategory_id');

@@ -53,8 +53,13 @@
 
                     <div class="form-group">
                     <label>Transaction Type<span style="color: red" class="required">*</span></label>
-                    <input name="transactionType" class="form-control" value="{{$salaryCharges->transactionType}}" placeholder="Enter Transaction Type">
+                    <select custom class="form-control" name="transactionType" id="transactionType" placeholder="Enter Recept Type">
+                        <option value="">Select One</option>
+                        <option {{($salaryCharges->transactionType == 'credit') ? 'selected': ''}} value="credit" >Credit</option>
+                        <option {{($salaryCharges->transactionType == 'debit') ? 'selected': ''}} value="debit" >Debit</option>
+                    </select>
                     </div>
+                    
 
                     <button type="submit" class="btn btn-default">Update Button</button>
                     <button type="reset" class="btn btn-default">Reset Button</button>
