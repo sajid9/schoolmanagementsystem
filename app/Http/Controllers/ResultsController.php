@@ -145,6 +145,15 @@ class ResultsController extends Controller
         $class   = $request->class;
         $section = $request->section;
         $term    = $request->term;
+        $results = $this->getResult($student,$class,$section,$term);
+        $students = Admission::with('registrations')->get();
+        $classes = MClass::all();
+        $sections = Section::all();
+        $terms = ExamTerm::all();
+        return view('pages.result.student-result',compact('students','classes','sections','results','terms','student','class','section','term'));
+    }
+    public function getResult($student,$class,$section,$term)
+    {
         $search = Result::with('admissions.registrations','examSchedules.batches','grades');
         if($student != null){
             $search->whereHas('admissions',function($q) use($student){
@@ -166,12 +175,11 @@ class ResultsController extends Controller
                 $q->where('examTerm_id',$term);
             });
         }
-        $results = $search->get();
-        $students = Admission::with('registrations')->get();
-        $classes = MClass::all();
-        $sections = Section::all();
-        $terms = ExamTerm::all();
-        return view('pages.result.student-result',compact('students','classes','sections','results','terms'));
+        return $search->get();
+    }
+    public function print_student_result(Request $request)
+    {
+        
     }
     public function result_summary()
     {

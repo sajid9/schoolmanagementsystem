@@ -10,7 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('checksize',function(){
+	$file_size = 0;
+	foreach( File::allFiles(public_path('assets/images')) as $file)
+	{
+	    $file_size += $file->getSize();
+	}
+	$file_size = number_format($file_size / 1048576,2);
+	if($file_size > 2){
+		echo "space full for more space check this link";
+	}else{
+		print_r($file_size.' MB');
+	}
+	
+});
 Route::get('/','HomeController@myHome');
 Route::get('/profile/{id}','HomeController@myProfile')->name("view_profile");
 	//registration routes
@@ -359,6 +372,8 @@ Route::get('student-result','ResultsController@student_result');
 Route::post('result-search','ResultsController@result_search');	
 Route::get('result-summary','ResultsController@result_summary');	
 Route::post('search-result-summary','ResultsController@search_result_summary');	
+Route::post('print-student-result','ResultsController@print_student_result');	
+
 /*
 *
 *Payments
